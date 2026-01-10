@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>George Marten | Academic Portfolio</title>
+    <title>About | George Marten</title>
     <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
     <!-- Google Fonts -->
@@ -25,6 +25,16 @@
         }
         h1, h2, h3, h4, .font-serif {
             font-family: 'EB Garamond', serif;
+        }
+        /* Drop Cap Logic */
+        .drop-cap::first-letter {
+            font-family: 'EB Garamond', serif;
+            float: left;
+            font-size: 5rem;
+            line-height: 0.7;
+            padding-right: 0.6rem;
+            color: var(--gothic-orange);
+            font-weight: bold;
         }
         /* Neo-Gothic Borders */
         .gothic-border {
@@ -55,8 +65,8 @@
                 <div class="h-0.5 bg-[#fb923c] w-0 group-hover:w-full transition-all duration-500"></div>
             </a>
             <div class="flex flex-wrap justify-center gap-x-10 gap-y-2">
-                <a href="index.html" class="nav-link text-[10px] font-black tracking-[0.3em] uppercase transition-all duration-300 text-[#fb923c]">Home</a>
-                <a href="about.html" class="nav-link text-[10px] font-black tracking-[0.3em] uppercase transition-all duration-300 text-slate-400 hover:text-[#1e3a5f]">About</a>
+                <a href="index.html" class="nav-link text-[10px] font-black tracking-[0.3em] uppercase transition-all duration-300 text-slate-400 hover:text-[#1e3a5f]">Home</a>
+                <a href="about.html" class="nav-link text-[10px] font-black tracking-[0.3em] uppercase transition-all duration-300 text-[#fb923c]">About</a>
                 <a href="cv.html" class="nav-link text-[10px] font-black tracking-[0.3em] uppercase transition-all duration-300 text-slate-400 hover:text-[#1e3a5f]">CV</a>
                 <a href="research.html" class="nav-link text-[10px] font-black tracking-[0.3em] uppercase transition-all duration-300 text-slate-400 hover:text-[#1e3a5f]">Research</a>
                 <a href="data.html" class="nav-link text-[10px] font-black tracking-[0.3em] uppercase transition-all duration-300 text-slate-400 hover:text-[#1e3a5f]">Data</a>
@@ -67,47 +77,45 @@
     </nav>
 
     <main class="container mx-auto px-8 py-20 max-w-5xl flex-grow min-h-screen">
-        <div class="flex flex-col items-center text-center">
-            <div class="mb-16">
-                <div class="w-64 overflow-hidden border-[10px] border-white shadow-2xl">
-                    <img src="images/profile.JPG" alt="George Marten" class="w-full h-auto" onerror="this.src='https://picsum.photos/seed/georgemarten/600/800'">
-                </div>
-            </div>
+        <div class="max-w-3xl mx-auto space-y-20">
+            <h2 class="text-4xl font-serif text-[#1e3a5f] flex items-center">
+                <span class="mr-6 w-16 h-px bg-[#fb923c]/30"></span>
+                About Me
+            </h2>
 
-            <header class="mb-12">
-                <h1 class="text-6xl font-serif text-[#1e3a5f] mb-2 font-bold tracking-tight">George Marten</h1>
-                <p class="text-[#fb923c] uppercase tracking-[0.3em] text-sm font-black">PhD Student in Economics at Heriot-Watt University</p>
-            </header>
+            <div class="text-slate-700 font-light leading-relaxed text-xl space-y-10">
+                <p class="drop-cap">
+                    I've been studying Economics continuously for over a decade, the most recent fifth of which has been
+                    under the supervision of Eoin McLaughlin, co-supervised by Rachel Forshaw. This time has allowed me 
+                    to engage with my latent love for history together with my training as an economist, which has been largely based
+                    in the applications of microeconomics and econometrics.
+                </p>
 
-            <div class="max-w-3xl mx-auto space-y-8 text-lg leading-relaxed text-slate-700 font-light">
-                <p>Welcome to my website. Have a look around!</p>
-                <div class="h-px w-24 bg-[#fb923c]/30 mx-auto my-12"></div>
+                <p>
+                    My main research provides insights into the nature of development, examining the roles of local and micro institutions 
+                    in order to test persistent political economy and identify hidden lessons for society today. 
+                </p>
 
-                <div class="grid md:grid-cols-2 gap-12 text-left">
-                    <div class="p-8 gothic-border bg-white shadow-sm">
-                        <h3 class="font-serif text-2xl text-[#1e3a5f] mb-6 border-b border-[#fb923c]/20 pb-2">Research Summary</h3>
-                        <ul class="space-y-4 text-base">
-                            <li class="flex items-start space-x-3">
-                                <span class="w-1.5 h-1.5 bg-[#fb923c] rounded-full mt-2"></span>
-                                <span>I study the century following the First Industrial Revolution.</span>
-                            </li>
-                            <li class="flex items-start space-x-3">
-                                <span class="w-1.5 h-1.5 bg-[#fb923c] rounded-full mt-2"></span>
-                                <span>Focused on mutual insurance, co-operative production, and microfinance.</span>
-                            </li>
-                            <li class="flex items-start space-x-3">
-                                <span class="w-1.5 h-1.5 bg-[#fb923c] rounded-full mt-2"></span>
-                                <span>I recently digitised Friendly Society Returns to Parliament 1855-1880.</span>
-                            </li>
-                        </ul>
+                <p>
+                    Beyond my core research, I am pretty keen on the philosophy of economics from a practical standpoint as
+                    it is experienced in everyday life. I particularly enjoy talking to non-economists, and demystifying 
+                    our brilliant discipline a little bit whenever possible. 
+                </p>
+
+                <p>
+                    Outside of research I (mostly) enjoy exploring the beauty (and brutality) of the Scottish Highlands:
+                    below are some pictures from three of my favourite adventures!
+                </p>
+
+                <div class="grid grid-cols-1 gap-8 pt-10">
+                    <div class="gothic-border p-1 bg-white shadow-lg">
+                        <img src="images/IoR.JPG" alt="IoR" class="w-full h-auto" onerror="this.src='https://picsum.photos/seed/ior/800/400'">
                     </div>
-
-                    <div class="p-8 gothic-border bg-white shadow-sm">
-                        <h3 class="font-serif text-2xl text-[#1e3a5f] mb-6 border-b border-[#fb923c]/20 pb-2">My Approach</h3>
-                        <p class="text-base leading-relaxed">
-                            I am interested in documenting lessons from British and Irish economic history using applied microeconometrics.
-                            I use modern empirical methods to unpick formative historical episodes in order to test persistent political economy ideas.
-                        </p>
+                    <div class="gothic-border p-1 bg-white shadow-lg">
+                        <img src="images/CMD.JPG" alt="CMD" class="w-full h-auto" onerror="this.src='https://picsum.photos/seed/cmd/800/400'">
+                    </div>
+                    <div class="gothic-border p-1 bg-white shadow-lg">
+                        <img src="images/CGM.JPG" alt="CGM" class="w-full h-auto" onerror="this.src='https://picsum.photos/seed/fire/800/400'">
                     </div>
                 </div>
             </div>

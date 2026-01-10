@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Essay Viewer | George Marten</title>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400..800;1,400..800&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+
+    <style>
+        :root {
+            --gothic-orange: #fb923c;
+            --gothic-blue: #1e3a5f;
+            --gothic-bg: #f0f7ff;
+        }
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: var(--gothic-bg);
+            color: #1e293b;
+        }
+        h1, h2, h3, h4, .font-serif {
+            font-family: 'EB Garamond', serif;
+        }
+        .glass-nav {
+            background: rgba(240, 247, 255, 0.9);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid rgba(30, 58, 95, 0.1);
+        }
+    </style>
+</head>
+<body class="selection:bg-orange-100 selection:text-orange-900">
+
+    <!-- Navigation -->
+    <nav class="sticky top-0 z-50 glass-nav px-8 py-6">
+        <div class="max-w-6xl mx-auto flex flex-col md:flex-row justify-between items-center gap-6">
+            <a href="index.html" class="group flex flex-col items-center md:items-start">
+                <h1 class="text-3xl font-serif font-bold tracking-tighter text-[#1e3a5f]">George Marten</h1>
+                <div class="h-0.5 bg-[#fb923c] w-0 group-hover:w-full transition-all duration-500"></div>
+            </a>
+            <div class="flex flex-wrap justify-center gap-x-10 gap-y-2">
+                <a href="index.html" class="nav-link text-[10px] font-black tracking-[0.3em] uppercase transition-all duration-300 text-slate-400 hover:text-[#1e3a5f]">Home</a>
+                <a href="about.html" class="nav-link text-[10px] font-black tracking-[0.3em] uppercase transition-all duration-300 text-slate-400 hover:text-[#1e3a5f]">About</a>
+                <a href="cv.html" class="nav-link text-[10px] font-black tracking-[0.3em] uppercase transition-all duration-300 text-slate-400 hover:text-[#1e3a5f]">CV</a>
+                <a href="research.html" class="nav-link text-[10px] font-black tracking-[0.3em] uppercase transition-all duration-300 text-slate-400 hover:text-[#1e3a5f]">Research</a>
+                <a href="data.html" class="nav-link text-[10px] font-black tracking-[0.3em] uppercase transition-all duration-300 text-slate-400 hover:text-[#1e3a5f]">Data</a>
+                <a href="teaching.html" class="nav-link text-[10px] font-black tracking-[0.3em] uppercase transition-all duration-300 text-slate-400 hover:text-[#1e3a5f]">Teaching</a>
+                <a href="essays.html" class="nav-link text-[10px] font-black tracking-[0.3em] uppercase transition-all duration-300 text-[#fb923c]">Essays</a>
+            </div>
+        </div>
+    </nav>
+
+    <main class="container mx-auto px-4 py-8 max-w-6xl">
+        <!-- Back link -->
+        <a href="essays.html" class="inline-flex items-center text-[#1e3a5f] hover:text-[#fb923c] transition-colors mb-6 text-sm font-medium">
+            <span class="mr-2">←</span> Back to Essays
+        </a>
+
+        <!-- Essay title -->
+        <h2 id="essay-title" class="text-4xl font-serif text-[#1e3a5f] mb-8 font-bold italic"></h2>
+
+        <!-- PDF Viewer -->
+        <div class="bg-white rounded-lg shadow-xl overflow-hidden" style="height: calc(100vh - 280px); min-height: 600px;">
+            <iframe id="pdf-viewer" class="w-full h-full" frameborder="0"></iframe>
+        </div>
+
+        <!-- Download link -->
+        <div class="mt-6 text-center">
+            <a id="download-link" href="#" class="inline-flex items-center px-6 py-3 bg-[#1e3a5f] text-white font-medium text-sm uppercase tracking-widest hover:bg-[#fb923c] transition-colors">
+                Download PDF
+            </a>
+        </div>
+    </main>
+
+    <script>
+        // Essay metadata - add your essays here
+        const essays = {
+            'example-essay-1': {
+                title: 'On the Nature of Historical Inquiry',
+                pdf: 'essays/example-essay-1.pdf'
+            },
+            'example-essay-2': {
+                title: 'Reflections on Cooperative Economics',
+                pdf: 'essays/example-essay-2.pdf'
+            },
+            'example-essay-3': {
+                title: 'The Scottish Highlands: A Personal History',
+                pdf: 'essays/example-essay-3.pdf'
+            }
+        };
+
+        // Get essay from URL parameter
+        const urlParams = new URLSearchParams(window.location.search);
+        const essayId = urlParams.get('essay');
+
+        if (essayId && essays[essayId]) {
+            const essay = essays[essayId];
+            document.getElementById('essay-title').textContent = essay.title;
+            document.getElementById('pdf-viewer').src = essay.pdf;
+            document.getElementById('download-link').href = essay.pdf;
+            document.title = essay.title + ' | George Marten';
+        } else {
+            document.getElementById('essay-title').textContent = 'Essay not found';
+            document.getElementById('pdf-viewer').style.display = 'none';
+            document.getElementById('download-link').style.display = 'none';
+        }
+    </script>
+
+</body>
+</html>

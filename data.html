@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Data | George Marten</title>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400..800;1,400..800&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+
+    <style>
+        :root {
+            --gothic-orange: #fb923c;
+            --gothic-blue: #1e3a5f;
+            --gothic-bg: #f0f7ff;
+        }
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: var(--gothic-bg);
+            color: #1e293b;
+            scroll-behavior: smooth;
+        }
+        h1, h2, h3, h4, .font-serif {
+            font-family: 'EB Garamond', serif;
+        }
+        /* Neo-Gothic Borders */
+        .gothic-border {
+            border: 2px solid var(--gothic-blue);
+            position: relative;
+        }
+        .gothic-border::after {
+            content: '';
+            position: absolute;
+            top: 3px; left: 3px; right: 3px; bottom: 3px;
+            border: 1px solid var(--gothic-orange);
+            pointer-events: none;
+        }
+        .glass-nav {
+            background: rgba(240, 247, 255, 0.9);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid rgba(30, 58, 95, 0.1);
+        }
+    </style>
+</head>
+<body class="selection:bg-orange-100 selection:text-orange-900">
+
+    <!-- Navigation -->
+    <nav class="sticky top-0 z-50 glass-nav px-8 py-6">
+        <div class="max-w-6xl mx-auto flex flex-col md:flex-row justify-between items-center gap-6">
+            <a href="index.html" class="group flex flex-col items-center md:items-start">
+                <h1 class="text-3xl font-serif font-bold tracking-tighter text-[#1e3a5f]">George Marten</h1>
+                <div class="h-0.5 bg-[#fb923c] w-0 group-hover:w-full transition-all duration-500"></div>
+            </a>
+            <div class="flex flex-wrap justify-center gap-x-10 gap-y-2">
+                <a href="index.html" class="nav-link text-[10px] font-black tracking-[0.3em] uppercase transition-all duration-300 text-slate-400 hover:text-[#1e3a5f]">Home</a>
+                <a href="about.html" class="nav-link text-[10px] font-black tracking-[0.3em] uppercase transition-all duration-300 text-slate-400 hover:text-[#1e3a5f]">About</a>
+                <a href="cv.html" class="nav-link text-[10px] font-black tracking-[0.3em] uppercase transition-all duration-300 text-slate-400 hover:text-[#1e3a5f]">CV</a>
+                <a href="research.html" class="nav-link text-[10px] font-black tracking-[0.3em] uppercase transition-all duration-300 text-slate-400 hover:text-[#1e3a5f]">Research</a>
+                <a href="data.html" class="nav-link text-[10px] font-black tracking-[0.3em] uppercase transition-all duration-300 text-[#fb923c]">Data</a>
+                <a href="teaching.html" class="nav-link text-[10px] font-black tracking-[0.3em] uppercase transition-all duration-300 text-slate-400 hover:text-[#1e3a5f]">Teaching</a>
+                <a href="essays.html" class="nav-link text-[10px] font-black tracking-[0.3em] uppercase transition-all duration-300 text-slate-400 hover:text-[#1e3a5f]">Essays</a>
+            </div>
+        </div>
+    </nav>
+
+    <main class="container mx-auto px-8 py-20 max-w-5xl flex-grow min-h-screen">
+        <div class="max-w-4xl mx-auto space-y-16">
+            <header>
+                <h2 class="text-5xl font-serif text-[#1e3a5f] mb-6 font-bold">Data Sources</h2>
+                <p class="text-slate-600 font-light text-xl leading-relaxed max-w-2xl">
+                    Constructing robust historical datasets is a cornerstone of my research. Below are several sources I have digitised or processed for analysis.
+                </p>
+            </header>
+
+            <div class="grid gap-12">
+                <!-- Source 1 -->
+                <div class="p-12 bg-white gothic-border shadow-sm group">
+                    <h3 class="text-3xl font-serif text-[#1e3a5f] mb-6 flex items-center italic">
+                        <span class="w-3 h-3 bg-[#fb923c] mr-6 rotate-45"></span>
+                        Friendly Society Returns (1855–1880)
+                    </h3>
+                    <p class="text-slate-600 mb-10 font-light leading-relaxed text-lg">
+                        A comprehensive digitisation of annual returns submitted to the Registrar of Friendly Societies in Great Britain and Ireland. This dataset tracks financial solvency, membership counts, and benefits paid for thousands of local mutual aid branches.
+                    </p>
+                    <div class="bg-[#fb923c]/5 p-8 gothic-border border-[#fb923c]/20">
+                        <h4 class="text-[10px] uppercase tracking-[0.3em] text-[#fb923c] font-black mb-6">Insights & Methodology</h4>
+                        <ul class="space-y-4">
+                            <li class="text-sm text-slate-600 flex items-start">
+                                <span class="text-[#fb923c] mr-4 font-bold">✦</span>
+                                <span>Over 15,000 unique local branches identified and geocoded.</span>
+                            </li>
+                            <li class="text-sm text-slate-600 flex items-start">
+                                <span class="text-[#fb923c] mr-4 font-bold">✦</span>
+                                <span>Captured transitions in investment strategies from local land to government bonds.</span>
+                            </li>
+                            <li class="text-sm text-slate-600 flex items-start">
+                                <span class="text-[#fb923c] mr-4 font-bold">✦</span>
+                                <span>Evidence of 'mutualism as social capital' in rapidly urbanising industrial centres.</span>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Source 2 -->
+                <div class="p-12 bg-white gothic-border shadow-sm group">
+                    <h3 class="text-3xl font-serif text-[#1e3a5f] mb-6 flex items-center italic">
+                        <span class="w-3 h-3 bg-[#fb923c] mr-6 rotate-45"></span>
+                        Victorian Co-operative Creameries Registry
+                    </h3>
+                    <p class="text-slate-600 mb-10 font-light leading-relaxed text-lg">
+                        A longitudinal panel of co-operative dairies in Ireland during the late 19th century. Data includes foundation dates, peak production volumes, and membership demographics sourced from local newspaper archives and government registries.
+                    </p>
+                    <div class="bg-[#fb923c]/5 p-8 gothic-border border-[#fb923c]/20">
+                        <h4 class="text-[10px] uppercase tracking-[0.3em] text-[#fb923c] font-black mb-6">Insights & Methodology</h4>
+                        <ul class="space-y-4">
+                            <li class="text-sm text-slate-600 flex items-start">
+                                <span class="text-[#fb923c] mr-4 font-bold">✦</span>
+                                <span>Correlation between the spread of cooperatives and local literacy rates.</span>
+                            </li>
+                            <li class="text-sm text-slate-600 flex items-start">
+                                <span class="text-[#fb923c] mr-4 font-bold">✦</span>
+                                <span>Network analysis reveals the critical role of central 'hubs' in diffusing technical knowledge.</span>
+                            </li>
+                            <li class="text-sm text-slate-600 flex items-start">
+                                <span class="text-[#fb923c] mr-4 font-bold">✦</span>
+                                <span>Mapping project-level failure rates against macroeconomic shocks.</span>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Source 3 -->
+                <div class="p-12 bg-white gothic-border shadow-sm group">
+                    <h3 class="text-3xl font-serif text-[#1e3a5f] mb-6 flex items-center italic">
+                        <span class="w-3 h-3 bg-[#fb923c] mr-6 rotate-45"></span>
+                        Parish Poverty Relief Ledgers (Mid-19th Century)
+                    </h3>
+                    <p class="text-slate-600 mb-10 font-light leading-relaxed text-lg">
+                        Digitised records of local 'Outdoor Relief' provided to the poor in selected Scottish counties. This data provides a granular look at the welfare floor before the rise of the national welfare state.
+                    </p>
+                    <div class="bg-[#fb923c]/5 p-8 gothic-border border-[#fb923c]/20">
+                        <h4 class="text-[10px] uppercase tracking-[0.3em] text-[#fb923c] font-black mb-6">Insights & Methodology</h4>
+                        <ul class="space-y-4">
+                            <li class="text-sm text-slate-600 flex items-start">
+                                <span class="text-[#fb923c] mr-4 font-bold">✦</span>
+                                <span>Seasonal variations in relief highly correlated with agricultural yield data.</span>
+                            </li>
+                            <li class="text-sm text-slate-600 flex items-start">
+                                <span class="text-[#fb923c] mr-4 font-bold">✦</span>
+                                <span>Insights into the demographics of 'temporary' vs. 'permanent' paupers.</span>
+                            </li>
+                            <li class="text-sm text-slate-600 flex items-start">
+                                <span class="text-[#fb923c] mr-4 font-bold">✦</span>
+                                <span>The impact of church fragmentation on local charity administration.</span>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="mt-24 py-20 bg-[#1e3a5f] text-slate-300">
+        <div class="max-w-6xl mx-auto px-8 text-center space-y-12">
+            <p class="font-serif italic text-2xl max-w-2xl mx-auto opacity-60 leading-relaxed">
+                "The impediment to action becomes the action. What stands in the way becomes the way."
+                <span class="block mt-4 text-lg not-italic">— Marcus Aurelius</span>
+            </p>
+            <div class="flex flex-wrap justify-center gap-16 text-[11px] tracking-[0.5em] uppercase font-black text-slate-400">
+                <span>© 2026 George Marten</span>
+                <a href="mailto:gjm2004@hw.ac.uk" class="hover:text-[#fb923c] transition-colors">Contact</a>
+            </div>
+        </div>
+    </footer>
+
+</body>
+</html>
