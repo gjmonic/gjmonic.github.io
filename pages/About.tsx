@@ -35,7 +35,7 @@ const About: React.FC = () => {
         <div className="grid grid-cols-3 gap-4 pt-10">
           <img src="images/IoR.jpg" alt="IoR" className="rounded-sm shadow-sm grayscale hover:grayscale-0 transition-all duration-500" />
           <img src="images/CMD.jpg" alt="CMD" className="rounded-sm shadow-sm grayscale hover:grayscale-0 transition-all duration-500" />
-          <img src="images/fire.jpg" alt="fire" className="rounded-sm shadow-sm grayscale hover:grayscale-0 transition-all duration-500" />
+          <img src="images/CGM.jpg" alt="fire" className="rounded-sm shadow-sm grayscale hover:grayscale-0 transition-all duration-500" />
         </div>
       </div>
     </div>
