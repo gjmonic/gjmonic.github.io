@@ -26,7 +26,7 @@
         h1, h2, h3, h4, .font-serif {
             font-family: 'EB Garamond', serif;
         }
-        /* Lancet Arch for Profile Picture */
+        /* Lancet Arch Shape */
         .arch-top {
             clip-path: ellipse(50% 100% at 50% 100%);
             border-top-left-radius: 50% 50%;
@@ -54,12 +54,12 @@
             border: 1px solid var(--gothic-orange);
             pointer-events: none;
         }
-        /* Animations */
+        /* SPA logic styles */
         .page-content {
             display: none;
             opacity: 0;
             transform: translateY(10px);
-            transition: opacity 0.5s ease, transform 0.5s ease;
+            transition: opacity 0.4s ease, transform 0.4s ease;
         }
         .page-content.active {
             display: block;
@@ -67,9 +67,17 @@
             transform: translateY(0);
         }
         .glass-nav {
-            background: rgba(255, 255, 255, 0.85);
+            background: rgba(255, 255, 255, 0.9);
             backdrop-filter: blur(10px);
             border-bottom: 1px solid rgba(15, 23, 42, 0.1);
+        }
+        .abstract-content {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease-out;
+        }
+        .abstract-content.open {
+            max-height: 500px;
         }
     </style>
 <script type="importmap">
@@ -79,7 +87,6 @@
   }
 }
 </script>
-<link rel="stylesheet" href="/index.css">
 </head>
 <body class="selection:bg-orange-100 selection:text-orange-900">
 
@@ -88,7 +95,7 @@
         <div class="max-w-6xl mx-auto flex flex-col md:flex-row justify-between items-center gap-6">
             <a href="#home" class="group flex flex-col items-center md:items-start" onclick="navigateTo('home')">
                 <h1 class="text-3xl font-serif font-bold tracking-tighter text-slate-900">George Marten</h1>
-                <div id="nav-indicator" class="h-0.5 bg-orange-600 w-0 group-hover:w-full transition-all duration-500"></div>
+                <div class="h-0.5 bg-orange-600 w-0 group-hover:w-full transition-all duration-500"></div>
             </a>
             <div class="flex flex-wrap justify-center gap-x-10 gap-y-2">
                 <a href="#home" onclick="navigateTo('home')" class="nav-link text-[10px] font-black tracking-[0.3em] uppercase transition-all duration-300 text-orange-600">Home</a>
@@ -106,35 +113,49 @@
         <!-- HOME PAGE -->
         <section id="home" class="page-content active">
             <div class="flex flex-col items-center text-center">
-                <div class="relative mb-24 group">
-                    <div class="absolute inset-0 bg-orange-600/5 rounded-full blur-3xl group-hover:bg-orange-600/10 transition-colors"></div>
-                    <div class="w-72 h-96 arch-top border-[10px] border-white shadow-2xl relative overflow-hidden bg-slate-100">
-                        <img src="images/profile.jpg" alt="George Marten" class="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-1000 group-hover:scale-110" onerror="this.src='https://picsum.photos/seed/georgem/600/800'">
+                <div class="relative mb-16 group">
+                    <div class="absolute inset-0 bg-orange-100 rounded-full blur-2xl opacity-20 group-hover:opacity-40 transition-opacity"></div>
+                    <div class="w-64 h-80 overflow-hidden arch-top border-[10px] border-white shadow-2xl relative">
+                        <img src="images/profile.jpg" alt="George Marten" class="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-transform duration-1000 group-hover:scale-105" onerror="this.src='https://picsum.photos/seed/georgemarten/600/800'">
                     </div>
-                    <div class="absolute -bottom-10 -right-10 w-24 h-24 bg-slate-900 flex items-center justify-center border-4 border-white shadow-2xl rotate-12 group-hover:rotate-0 transition-transform">
-                        <span class="font-serif text-4xl text-orange-600 font-bold">G</span>
-                    </div>
+                    <div class="absolute -bottom-4 -right-4 w-12 h-12 bg-orange-300 rotate-45 border-4 border-white shadow-md"></div>
                 </div>
                 
-                <h2 class="text-7xl font-serif text-slate-900 mb-6 font-bold tracking-tight">Academic Portfolio</h2>
-                <div class="flex items-center justify-center gap-6 mb-16">
-                    <div class="h-px w-16 bg-orange-600/30"></div>
-                    <p class="text-orange-600 uppercase tracking-[0.5em] text-xs font-black">Economic History • Microeconometrics</p>
-                    <div class="h-px w-16 bg-orange-600/30"></div>
-                </div>
+                <header class="mb-12">
+                    <h1 class="text-6xl font-serif text-slate-900 mb-2 font-bold tracking-tight">George Marten</h1>
+                    <p class="text-orange-500 uppercase tracking-[0.3em] text-sm font-black">PhD Student in Economics at Heriot-Watt University</p>
+                </header>
 
-                <div class="grid md:grid-cols-2 gap-12 text-left">
-                    <div class="p-10 gothic-border bg-white shadow-sm">
-                        <h3 class="font-serif text-3xl text-slate-900 mb-4">Mutualism</h3>
-                        <p class="text-slate-600 leading-relaxed font-light text-lg">
-                            Researching the resilience of local mutual insurance networks during the peak of the Industrial Revolution (1855–1880).
-                        </p>
-                    </div>
-                    <div class="p-10 gothic-border bg-white shadow-sm">
-                        <h3 className="font-serif text-3xl text-slate-900 mb-4">Digitisation</h3>
-                        <p class="text-slate-600 leading-relaxed font-light text-lg">
-                            Creating structured datasets from expansive historical archives using modern computational techniques and OCR pipelines.
-                        </p>
+                <div class="max-w-3xl mx-auto space-y-8 text-lg leading-relaxed text-slate-700 font-light">
+                    <p>Welcome to my website. Have a look around!</p>
+                    <div class="h-px w-24 bg-orange-200 mx-auto my-12"></div>
+
+                    <div class="grid md:grid-cols-2 gap-12 text-left">
+                        <div class="p-8 gothic-border bg-white shadow-sm">
+                            <h3 class="font-serif text-2xl text-slate-900 mb-6 border-b border-orange-100 pb-2">Research Summary</h3>
+                            <ul class="space-y-4 text-base">
+                                <li class="flex items-start space-x-3">
+                                    <span class="w-1.5 h-1.5 bg-orange-400 rounded-full mt-2"></span>
+                                    <span>I study the century following the First Industrial Revolution.</span>
+                                </li>
+                                <li class="flex items-start space-x-3">
+                                    <span class="w-1.5 h-1.5 bg-orange-400 rounded-full mt-2"></span>
+                                    <span>Focused on mutual insurance, co-operative production, and microfinance.</span>
+                                </li>
+                                <li class="flex items-start space-x-3">
+                                    <span class="w-1.5 h-1.5 bg-orange-400 rounded-full mt-2"></span>
+                                    <span>I recently digitised Friendly Society Returns to Parliament 1855-1880.</span>
+                                </li>
+                            </ul>
+                        </div>
+                        
+                        <div class="p-8 gothic-border bg-white shadow-sm">
+                            <h3 class="font-serif text-2xl text-slate-900 mb-6 border-b border-orange-100 pb-2">My Approach</h3>
+                            <p class="text-base leading-relaxed">
+                                I am interested in documenting lessons from British and Irish economic history using applied microeconometrics. 
+                                I use modern empirical methods to unpick formative historical episodes in order to test persistent political economy ideas.
+                            </p>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -143,27 +164,44 @@
         <!-- ABOUT PAGE -->
         <section id="about" class="page-content">
             <div class="max-w-3xl mx-auto space-y-20">
-                <div class="text-center space-y-4">
-                    <h2 class="text-6xl font-serif text-slate-900">The Scholar</h2>
-                    <div class="w-24 h-1 bg-orange-600 mx-auto"></div>
-                </div>
-                <div class="text-slate-700 font-light leading-relaxed text-xl">
+                <h2 class="text-4xl font-serif text-slate-900 flex items-center">
+                    <span class="mr-6 w-16 h-px bg-orange-200"></span>
+                    About Me
+                </h2>
+                
+                <div class="text-slate-700 font-light leading-relaxed text-xl space-y-10">
                     <p class="drop-cap">
-                        I am a PhD student in Economics at Heriot-Watt University, specializing in the intersection of microeconometrics and 19th-century history. My passion is unearthing quantitative evidence from forgotten archives to understand how societies self-organized before the modern state.
+                        I've been studying Economics continuously for over a decade, the most recent fifth of which has been 
+                        under the supervision of Eoin McLaughlin. This has helped me to engage with a latent long running 
+                        love of history which enriches my research, based in my training which has been largely based
+                        in the applications of microeconomics and econometrics. 
                     </p>
-                    <p class="mt-12">
-                        My primary research involves the digitisation and analysis of thousands of Friendly Society returns. These records reveal a complex web of community-based welfare that provided critical support to millions of people during Britain's rapid industrialization.
+                    
+                    <p>
+                        Beyond my core research, I am an advocate for open-source scholarship and collaborative science. 
+                        I believe that the ivory tower should have more windows—and fewer doors. My work often involves 
+                        building public-facing digital archives that allow non-specialists to engage with primary source materials.
                     </p>
-                </div>
-                <div class="grid grid-cols-3 gap-8 mt-20">
-                    <div class="group relative overflow-hidden rounded-sm shadow-xl aspect-[3/4] border-4 border-white">
-                        <img src="images/IoR.jpg" alt="Hebrides" class="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-1000" onerror="this.src='https://picsum.photos/seed/hebrides/600/800'">
-                    </div>
-                    <div class="group relative overflow-hidden rounded-sm shadow-xl aspect-[3/4] border-4 border-white">
-                        <img src="images/CMD.jpg" alt="CMD Ridge" class="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-1000" onerror="this.src='https://picsum.photos/seed/peak/600/800'">
-                    </div>
-                    <div class="group relative overflow-hidden rounded-sm shadow-xl aspect-[3/4] border-4 border-white">
-                        <img src="images/fire.jpg" alt="The Hearth" class="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-1000" onerror="this.src='https://picsum.photos/seed/candle/600/800'">
+
+                    <blockquote class="border-l-4 border-orange-500 pl-8 italic font-serif text-2xl text-slate-600 my-16 py-4 bg-orange-50/30">
+                        "History is not a burden on the memory, but an illumination of the soul."
+                    </blockquote>
+
+                    <p>
+                        Outside of research I enjoy exploring the beauty (and brutality!) of the Scottish Highlands: 
+                        here are some pictures from three of my favourite adventures!
+                    </p>
+
+                    <div class="grid grid-cols-3 gap-8 pt-10">
+                        <div class="aspect-[3/4] gothic-border p-1 bg-white shadow-lg overflow-hidden">
+                            <img src="images/IoR.jpg" alt="IoR" class="w-full h-full object-cover grayscale hover:grayscale-0 transition-all duration-700" onerror="this.src='https://picsum.photos/seed/ior/400/600'">
+                        </div>
+                        <div class="aspect-[3/4] gothic-border p-1 bg-white shadow-lg overflow-hidden">
+                            <img src="images/CMD.jpg" alt="CMD" class="w-full h-full object-cover grayscale hover:grayscale-0 transition-all duration-700" onerror="this.src='https://picsum.photos/seed/cmd/400/600'">
+                        </div>
+                        <div class="aspect-[3/4] gothic-border p-1 bg-white shadow-lg overflow-hidden">
+                            <img src="images/fire.jpg" alt="fire" class="w-full h-full object-cover grayscale hover:grayscale-0 transition-all duration-700" onerror="this.src='https://picsum.photos/seed/fire/400/600'">
+                        </div>
                     </div>
                 </div>
             </div>
@@ -171,63 +209,123 @@
 
         <!-- CV PAGE -->
         <section id="cv" class="page-content">
-            <div class="max-w-4xl mx-auto pb-20">
-                <div class="bg-white shadow-2xl p-12 md:p-24 gothic-border text-slate-900 font-serif min-h-[1100px]">
-                    <header class="text-center mb-24 space-y-6">
-                        <h1 class="text-6xl font-bold">George J. Marten</h1>
-                        <p class="text-xs uppercase tracking-[0.5em] font-black text-orange-600">Curriculum Vitae</p>
-                        <div class="flex flex-wrap justify-center gap-12 text-xs font-bold text-slate-400 font-sans tracking-widest">
-                            <a href="mailto:gjm2004@hw.ac.uk" class="hover:text-orange-600 underline decoration-slate-200">gjm2004@hw.ac.uk</a>
-                            <span>georgemarten.net</span>
+            <div class="max-w-4xl mx-auto pb-20 px-4">
+                <div class="bg-white shadow-2xl p-10 md:p-20 gothic-border text-slate-900 font-serif min-h-[1100px] leading-relaxed">
+                    
+                    <header class="text-center mb-16">
+                        <h1 class="text-5xl font-bold mb-4">George J. Marten</h1>
+                        <div class="text-sm space-y-1 text-slate-500 font-sans tracking-widest uppercase">
+                            <p>Email: <a href="mailto:gjm2004@hw.ac.uk" class="text-orange-600 hover:underline">gjm2004@hw.ac.uk</a></p>
+                            <p>Webpage: <a href="https://georgemarten.net" class="text-orange-600 hover:underline">georgemarten.net</a></p>
+                            <p>Edinburgh Business School, Heriot-Watt University</p>
                         </div>
                     </header>
-                    <div class="space-y-20">
-                        <section>
-                            <h3 class="text-[11px] font-sans font-black uppercase tracking-[0.4em] text-slate-950 mb-10 border-b-2 border-slate-900 pb-2">I. Education</h3>
-                            <div class="space-y-8">
-                                <div class="flex justify-between items-start">
-                                    <div>
-                                        <p class="text-2xl font-bold italic">Ph.D. Economics</p>
-                                        <p class="text-slate-500 font-sans text-sm">Heriot-Watt University, Edinburgh</p>
-                                    </div>
-                                    <p class="text-sm font-sans italic opacity-40">2023 – 2026</p>
+
+                    <div class="space-y-16">
+                        <!-- Education -->
+                        <div>
+                            <div class="w-full h-[1px] bg-slate-300 mb-2"></div>
+                            <h3 class="text-xs font-black uppercase tracking-[0.3em] text-slate-900 mb-6">Education</h3>
+                            <div class="space-y-4">
+                                <div class="grid grid-cols-12 gap-2 text-sm">
+                                    <div class="col-span-4 font-bold">Ph.D., Economics</div>
+                                    <div class="col-span-5 italic text-slate-600">Heriot-Watt University</div>
+                                    <div class="col-span-3 text-right tabular-nums">(expected) 2026</div>
                                 </div>
-                                <div class="flex justify-between items-start opacity-60">
-                                    <div>
-                                        <p class="text-2xl font-bold italic">M.Sc. Economics</p>
-                                        <p class="text-slate-500 font-sans text-sm">University of Edinburgh</p>
-                                    </div>
-                                    <p class="text-sm font-sans italic opacity-40">2021 – 2022</p>
+                                <div class="grid grid-cols-12 gap-2 text-sm">
+                                    <div class="col-span-4 font-bold">M.Sc., Economics</div>
+                                    <div class="col-span-5 italic text-slate-600">University of Edinburgh</div>
+                                    <div class="col-span-3 text-right tabular-nums">2022</div>
                                 </div>
-                            </div>
-                        </section>
-                        <section>
-                            <h3 class="text-[11px] font-sans font-black uppercase tracking-[0.4em] text-slate-950 mb-10 border-b-2 border-slate-900 pb-2">II. Selected Papers</h3>
-                            <div class="space-y-12">
-                                <div>
-                                    <p class="text-xl font-bold leading-tight">"Mutual Insurance and the Industrial Revolution"</p>
-                                    <p class="text-sm text-slate-600 font-sans mt-3 font-light max-w-2xl leading-relaxed">
-                                        Analyzing 20,000+ branch-level returns to map social resilience during structural economic change.
-                                    </p>
+                                <div class="grid grid-cols-12 gap-2 text-sm">
+                                    <div class="col-span-4 font-bold">B.Sc., Economics</div>
+                                    <div class="col-span-5 italic text-slate-600">Royal Holloway College</div>
+                                    <div class="col-span-3 text-right tabular-nums">2020</div>
                                 </div>
                             </div>
-                        </section>
+                        </div>
+
+                        <!-- Interests -->
+                        <div>
+                            <div class="w-full h-[1px] bg-slate-300 mb-2"></div>
+                            <h3 class="text-xs font-black uppercase tracking-[0.3em] text-slate-900 mb-6">Research Interests</h3>
+                            <p class="text-sm text-slate-700 leading-relaxed font-sans">
+                                Political Economy of Welfare Systems, Friendly Societies in Britain 19th Century, English Poor Laws Post-1834, Co-operation (both Irish and British), Emissions-Development Modelling, Applied Econometrics.
+                            </p>
+                        </div>
+
+                        <!-- Papers -->
+                        <div>
+                            <div class="w-full h-[1px] bg-slate-300 mb-2"></div>
+                            <h3 class="text-xs font-black uppercase tracking-[0.3em] text-slate-900 mb-6">Working Papers</h3>
+                            <div class="space-y-6">
+                                <div class="flex gap-4 text-sm">
+                                    <div class="w-4 flex-shrink-0 text-slate-300 font-bold">1.</div>
+                                    <div>
+                                        <div class="font-bold text-slate-900">"Mutual Insurance and the Industrial Revolution: Evidence from Friendly Society Returns"</div>
+                                        <div class="italic text-slate-500 mt-1">Job Market Paper</div>
+                                    </div>
+                                </div>
+                                <div class="flex gap-4 text-sm">
+                                    <div class="w-4 flex-shrink-0 text-slate-300 font-bold">2.</div>
+                                    <div>
+                                        <div class="font-bold text-slate-900">"The Political Economy of Co-operative Production in Victorian Ireland"</div>
+                                        <div class="italic text-slate-500 mt-1">with Eoin McLaughlin (R&R at Journal of Economic History)</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Teaching -->
+                        <div>
+                            <div class="w-full h-[1px] bg-slate-300 mb-2"></div>
+                            <h3 class="text-xs font-black uppercase tracking-[0.3em] text-slate-900 mb-6">Teaching Experience</h3>
+                            <div class="space-y-6">
+                                <div class="text-sm">
+                                    <div class="font-bold mb-2">Teaching Assistant, Heriot-Watt University</div>
+                                    <div class="space-y-1 pl-4">
+                                        <div class="flex justify-between text-slate-700"><span>Intermediate Economics 2 (MSc)</span><span class="tabular-nums">2025</span></div>
+                                        <div class="flex justify-between text-slate-700"><span>The Economy (1)</span><span class="tabular-nums">2021–2023</span></div>
+                                    </div>
+                                </div>
+                                <div class="text-sm">
+                                    <div class="font-bold mb-2">Tutor in Economics, University of Edinburgh</div>
+                                    <div class="space-y-1 pl-4">
+                                        <div class="flex justify-between text-slate-700"><span>Statistical Methods for Economics (2)</span><span class="tabular-nums">2021–2022</span></div>
+                                        <div class="flex justify-between text-slate-700"><span>Economic Principles (1)</span><span class="tabular-nums">2021–2022</span></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Awards -->
+                        <div>
+                            <div class="w-full h-[1px] bg-slate-300 mb-2"></div>
+                            <h3 class="text-xs font-black uppercase tracking-[0.3em] text-slate-900 mb-6">Awards and Fellowships</h3>
+                            <div class="space-y-2 text-sm">
+                                <div class="flex justify-between">
+                                    <span>Full scholarship for Ph.D. (Economics), CSED Analytics, Heriot-Watt</span>
+                                    <span class="tabular-nums">2023–2026</span>
+                                </div>
+                                <div class="flex justify-between">
+                                    <span>Economics Prize, St. Crispin’s Secondary School, Wokingham</span>
+                                    <span class="tabular-nums">2017</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="mt-24 text-right text-[10px] text-slate-300 italic tracking-widest uppercase font-sans">
+                        Updated on <span id="current-date"></span>
                     </div>
                 </div>
-                <div class="mt-16 flex flex-col items-center gap-10">
-                    <button onclick="toggleLatex()" class="px-12 py-5 bg-slate-900 text-white font-sans font-black text-xs uppercase tracking-[0.3em] hover:bg-orange-600 transition-all shadow-2xl">
+
+                <div class="mt-16 max-w-2xl mx-auto flex flex-col items-center">
+                    <button onclick="toggleLatex()" class="w-full py-5 bg-slate-950 text-white font-sans font-black text-xs uppercase tracking-[0.4em] hover:bg-orange-600 transition-all shadow-2xl">
                         Reveal LaTeX Source
                     </button>
-                    <div id="latex-view" class="hidden w-full p-12 bg-slate-950 rounded-none shadow-inner border-t-8 border-orange-600 overflow-x-auto">
-                        <pre class="text-orange-400/80 text-xs font-mono leading-relaxed">% Academic CV - George Marten
-\documentclass[11pt,a4paper]{article}
-\begin{document}
-\centerline{\huge \textbf{George J. Marten}}
-\centerline{Heriot-Watt University}
-\section*{Education}
-\textbf{Ph.D. Economics}, Heriot-Watt \hfill (exp) 2026
-\textbf{M.Sc. Economics}, Edinburgh \hfill 2022
-\end{document}</pre>
+                    <div id="latex-view" class="hidden w-full mt-6 p-10 bg-slate-950 rounded-none border-t-8 border-orange-600 overflow-x-auto shadow-inner">
+                        <pre id="latex-code" class="text-orange-400/80 text-[11px] font-mono leading-relaxed whitespace-pre-wrap"></pre>
                     </div>
                 </div>
             </div>
@@ -235,21 +333,74 @@
 
         <!-- RESEARCH PAGE -->
         <section id="research" class="page-content">
-            <div class="space-y-16">
-                <header class="space-y-4 text-center md:text-left">
-                    <h2 class="text-7xl font-serif text-slate-900 font-bold">Research</h2>
-                    <p class="text-slate-400 font-light text-2xl leading-relaxed max-w-3xl">Uncovering the quantitative history of community insurance.</p>
+            <div class="max-w-4xl mx-auto space-y-16">
+                <header>
+                    <h2 class="text-5xl font-serif text-slate-900 mb-6 font-bold">Research</h2>
+                    <p class="text-slate-600 font-light text-xl leading-relaxed max-w-3xl">
+                        My research applies microeconometric techniques to historical datasets, focusing on the evolution of mutualism and cooperative production in the 19th century.
+                    </p>
                 </header>
-                <div class="grid gap-16">
-                    <div class="p-16 gothic-border bg-white group hover:border-orange-600 transition-colors">
-                        <span class="text-[11px] font-black text-orange-600 uppercase tracking-[0.4em] mb-6 block">Current Project</span>
-                        <h3 class="text-4xl font-serif text-slate-900 mb-6 italic">Mutual Insurance & Industrial Growth</h3>
-                        <p class="text-slate-600 font-light leading-relaxed text-xl mb-10">
-                            How did traditional community networks respond to the massive demographic shifts of the 19th century? I utilize branch-level financial data to track institutional adaptation.
-                        </p>
-                        <div class="flex flex-wrap gap-4">
-                            <span class="text-[10px] font-black bg-slate-900 text-white px-4 py-2 uppercase tracking-widest">Job Market Paper</span>
-                            <span class="text-[10px] font-black bg-orange-600 text-white px-4 py-2 uppercase tracking-widest">History</span>
+
+                <div class="space-y-12">
+                    <h3 class="text-xs uppercase tracking-[0.4em] font-black text-slate-300 mb-8 flex items-center">
+                        Working Papers
+                        <span class="ml-6 flex-grow h-px bg-slate-100"></span>
+                    </h3>
+                    
+                    <div class="grid gap-10">
+                        <!-- Paper 1 -->
+                        <div class="p-10 gothic-border bg-white shadow-sm group">
+                            <div class="flex flex-wrap gap-2 mb-6">
+                                <span class="text-[10px] font-black uppercase tracking-widest text-orange-600 bg-orange-50 px-3 py-1">Economic History</span>
+                                <span class="text-[10px] font-black uppercase tracking-widest text-orange-600 bg-orange-50 px-3 py-1">Mutualism</span>
+                            </div>
+                            <h3 class="text-3xl font-serif text-slate-900 mb-2 italic">"Mutual Insurance and the Industrial Revolution: Evidence from Friendly Society Returns"</h3>
+                            <p class="text-slate-400 text-sm mb-8 italic">2024</p>
+                            <button onclick="toggleAbstract('abs1')" class="text-[10px] font-black uppercase tracking-[0.3em] text-slate-900 hover:text-orange-600 transition-colors flex items-center">
+                                Abstract <span class="ml-2">↓</span>
+                            </button>
+                            <div id="abs1" class="abstract-content">
+                                <p class="mt-8 text-slate-600 font-light leading-relaxed border-l-2 border-orange-200 pl-6 italic">
+                                    This paper uses newly digitised returns from 1855-1880 to examine how mutual insurance networks adapted to the shocks of late-stage industrialisation in Britain.
+                                </p>
+                            </div>
+                        </div>
+
+                        <!-- Paper 2 -->
+                        <div class="p-10 gothic-border bg-white shadow-sm group">
+                            <div class="flex flex-wrap gap-2 mb-6">
+                                <span class="text-[10px] font-black uppercase tracking-widest text-orange-600 bg-orange-50 px-3 py-1">Political Economy</span>
+                                <span class="text-[10px] font-black uppercase tracking-widest text-orange-600 bg-orange-50 px-3 py-1">Cooperatives</span>
+                            </div>
+                            <h3 class="text-3xl font-serif text-slate-900 mb-1 italic">"The Political Economy of Co-operative Production in Victorian Ireland"</h3>
+                            <p class="text-sm text-slate-500 mb-2">With: <span class="italic">Eoin McLaughlin</span></p>
+                            <p class="text-slate-400 text-sm mb-8 italic">2023</p>
+                            <button onclick="toggleAbstract('abs2')" class="text-[10px] font-black uppercase tracking-[0.3em] text-slate-900 hover:text-orange-600 transition-colors flex items-center">
+                                Abstract <span class="ml-2">↓</span>
+                            </button>
+                            <div id="abs2" class="abstract-content">
+                                <p class="mt-8 text-slate-600 font-light leading-relaxed border-l-2 border-orange-200 pl-6 italic">
+                                    We investigate the factors predicting the success of early co-operative creameries, highlighting the role of local political stability and existing credit networks.
+                                </p>
+                            </div>
+                        </div>
+
+                        <!-- Paper 3 -->
+                        <div class="p-10 gothic-border bg-white shadow-sm group">
+                            <div class="flex flex-wrap gap-2 mb-6">
+                                <span class="text-[10px] font-black uppercase tracking-widest text-orange-600 bg-orange-50 px-3 py-1">Data Science</span>
+                                <span class="text-[10px] font-black uppercase tracking-widest text-orange-600 bg-orange-50 px-3 py-1">Methodology</span>
+                            </div>
+                            <h3 class="text-3xl font-serif text-slate-900 mb-2 italic">"Digitising the Past: A New Dataset of British Friendly Society Financial Records"</h3>
+                            <p class="text-slate-400 text-sm mb-8 italic">2023</p>
+                            <button onclick="toggleAbstract('abs3')" class="text-[10px] font-black uppercase tracking-[0.3em] text-slate-900 hover:text-orange-600 transition-colors flex items-center">
+                                Abstract <span class="ml-2">↓</span>
+                            </button>
+                            <div id="abs3" class="abstract-content">
+                                <p class="mt-8 text-slate-600 font-light leading-relaxed border-l-2 border-orange-200 pl-6 italic">
+                                    A methodological overview of the OCR and data cleaning pipeline developed to extract structured longitudinal data from Parliamentary returns.
+                                </p>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -258,39 +409,144 @@
 
         <!-- TEACHING PAGE -->
         <section id="teaching" class="page-content">
-            <div class="space-y-16">
-                <h2 class="text-7xl font-serif text-slate-900 font-bold">Teaching</h2>
-                <div class="p-16 gothic-border bg-slate-900 text-white">
-                    <div class="flex justify-between items-center mb-8 border-b border-white/10 pb-6">
-                        <span class="text-xs font-black text-orange-600 tracking-[0.4em] uppercase">ECON101</span>
-                        <span class="text-xs font-bold text-slate-500 uppercase tracking-widest">Heriot-Watt University</span>
-                    </div>
-                    <h3 class="text-5xl font-serif mb-6 italic">Principles of Microeconomics</h3>
-                    <p class="text-slate-400 font-light text-xl leading-relaxed max-w-3xl">
-                        Instructing undergraduate students in the fundamental frameworks of economic decision-making, from consumer theory to market equilibrium.
-                    </p>
+            <div class="max-w-4xl mx-auto space-y-16">
+                <h2 class="text-5xl font-serif text-slate-900 font-bold">Teaching</h2>
+                
+                <div class="space-y-16">
+                    <section>
+                        <h4 class="text-[11px] uppercase tracking-[0.4em] font-black text-slate-300 mb-10">Current Courses</h4>
+                        <div class="p-12 bg-white gothic-border group">
+                            <div class="flex flex-col md:flex-row md:items-center justify-between mb-8 border-b border-orange-100 pb-6">
+                                <div>
+                                    <span class="text-xs font-black text-orange-600 uppercase tracking-widest block mb-2">ECON101</span>
+                                    <h3 class="text-4xl font-serif text-slate-900 italic">Principles of Microeconomics</h3>
+                                </div>
+                                <div class="text-right mt-4 md:mt-0 font-sans">
+                                    <span class="text-xs font-black text-slate-900 uppercase tracking-widest block">Tutorial Lead</span>
+                                    <span class="text-xs text-slate-400 block italic uppercase tracking-widest mt-1">Autumn 2023</span>
+                                </div>
+                            </div>
+                            <p class="text-slate-600 leading-relaxed font-light text-xl">
+                                Leading weekly tutorials for first-year undergraduates, focusing on consumer theory and market equilibrium.
+                            </p>
+                        </div>
+                    </section>
+
+                    <section>
+                        <h4 class="text-[11px] uppercase tracking-[0.4em] font-black text-slate-300 mb-10">Past Courses</h4>
+                        <div class="grid gap-10">
+                            <div class="p-10 gothic-border bg-slate-900 text-white">
+                                <div class="flex flex-col md:flex-row md:items-center justify-between mb-6">
+                                    <h3 class="text-3xl font-serif italic text-orange-500">Economic History of the British Isles</h3>
+                                    <span class="text-[10px] font-black uppercase tracking-widest text-slate-500">HIST210 | TA | Spring 2022</span>
+                                </div>
+                                <p class="text-slate-400 font-light leading-relaxed">Assisted in curriculum development and grading for a survey course covering the 17th to 20th centuries.</p>
+                            </div>
+                            <div class="p-10 gothic-border bg-slate-900 text-white">
+                                <div class="flex flex-col md:flex-row md:items-center justify-between mb-6">
+                                    <h3 class="text-3xl font-serif italic text-orange-500">Applied Econometrics for Social Science</h3>
+                                    <span class="text-[10px] font-black uppercase tracking-widest text-slate-500">QUAN300 | Lab Instructor | Winter 2021</span>
+                                </div>
+                                <p class="text-slate-400 font-light leading-relaxed">Taught introductory Stata and R for quantitative data analysis in a laboratory setting.</p>
+                            </div>
+                        </div>
+                    </section>
                 </div>
             </div>
         </section>
 
         <!-- DATA PAGE -->
         <section id="data" class="page-content">
-            <div class="space-y-16">
-                <h2 class="text-7xl font-serif text-slate-900 font-bold">Data</h2>
-                <div class="p-20 bg-white border-8 border-slate-900 relative shadow-2xl">
-                    <div class="absolute top-0 right-0 w-32 h-32 bg-orange-600/10 blur-[100px]"></div>
-                    <h3 class="text-4xl font-serif mb-8 text-slate-900 font-bold">The Friendly Society Database</h3>
-                    <p class="text-slate-600 font-light leading-relaxed text-xl mb-12 max-w-3xl">
-                        I have constructed a unique longitudinal database from tens of thousands of Parliamentary returns, covering the financial history of mutual aid across the British Isles.
+            <div class="max-w-4xl mx-auto space-y-16">
+                <header>
+                    <h2 class="text-5xl font-serif text-slate-900 mb-6 font-bold">Data Sources</h2>
+                    <p class="text-slate-600 font-light text-xl leading-relaxed max-w-2xl">
+                        Constructing robust historical datasets is a cornerstone of my research. Below are several sources I have digitised or processed for analysis.
                     </p>
-                    <div class="grid grid-cols-2 gap-12 border-t-2 border-slate-900 pt-12">
-                        <div>
-                            <p class="text-xs font-black text-orange-600 uppercase tracking-[0.3em] mb-2">Total Branches</p>
-                            <p class="text-4xl font-serif font-bold italic">15,000+</p>
+                </header>
+
+                <div class="grid gap-12">
+                    <!-- Source 1 -->
+                    <div class="p-12 bg-white gothic-border shadow-sm group">
+                        <h3 class="text-3xl font-serif text-slate-900 mb-6 flex items-center italic">
+                            <span class="w-3 h-3 bg-orange-500 mr-6 rotate-45"></span>
+                            Friendly Society Returns (1855–1880)
+                        </h3>
+                        <p class="text-slate-600 mb-10 font-light leading-relaxed text-lg">
+                            A comprehensive digitisation of annual returns submitted to the Registrar of Friendly Societies in Great Britain and Ireland. This dataset tracks financial solvency, membership counts, and benefits paid for thousands of local mutual aid branches.
+                        </p>
+                        <div class="bg-orange-50/50 p-8 gothic-border border-orange-100">
+                            <h4 class="text-[10px] uppercase tracking-[0.3em] text-orange-600 font-black mb-6">Insights & Methodology</h4>
+                            <ul class="space-y-4">
+                                <li class="text-sm text-slate-600 flex items-start">
+                                    <span class="text-orange-500 mr-4 font-bold">✦</span>
+                                    <span>Over 15,000 unique local branches identified and geocoded.</span>
+                                </li>
+                                <li class="text-sm text-slate-600 flex items-start">
+                                    <span class="text-orange-500 mr-4 font-bold">✦</span>
+                                    <span>Captured transitions in investment strategies from local land to government bonds.</span>
+                                </li>
+                                <li class="text-sm text-slate-600 flex items-start">
+                                    <span class="text-orange-500 mr-4 font-bold">✦</span>
+                                    <span>Evidence of 'mutualism as social capital' in rapidly urbanising industrial centres.</span>
+                                </li>
+                            </ul>
                         </div>
-                        <div>
-                            <p class="text-xs font-black text-orange-600 uppercase tracking-[0.3em] mb-2">Time Horizon</p>
-                            <p class="text-4xl font-serif font-bold italic">1855 – 1880</p>
+                    </div>
+
+                    <!-- Source 2 -->
+                    <div class="p-12 bg-white gothic-border shadow-sm group">
+                        <h3 class="text-3xl font-serif text-slate-900 mb-6 flex items-center italic">
+                            <span class="w-3 h-3 bg-orange-500 mr-6 rotate-45"></span>
+                            Victorian Co-operative Creameries Registry
+                        </h3>
+                        <p class="text-slate-600 mb-10 font-light leading-relaxed text-lg">
+                            A longitudinal panel of co-operative dairies in Ireland during the late 19th century. Data includes foundation dates, peak production volumes, and membership demographics sourced from local newspaper archives and government registries.
+                        </p>
+                        <div class="bg-orange-50/50 p-8 gothic-border border-orange-100">
+                            <h4 class="text-[10px] uppercase tracking-[0.3em] text-orange-600 font-black mb-6">Insights & Methodology</h4>
+                            <ul class="space-y-4">
+                                <li class="text-sm text-slate-600 flex items-start">
+                                    <span class="text-orange-500 mr-4 font-bold">✦</span>
+                                    <span>Correlation between the spread of cooperatives and local literacy rates.</span>
+                                </li>
+                                <li class="text-sm text-slate-600 flex items-start">
+                                    <span class="text-orange-500 mr-4 font-bold">✦</span>
+                                    <span>Network analysis reveals the critical role of central 'hubs' in diffusing technical knowledge.</span>
+                                </li>
+                                <li class="text-sm text-slate-600 flex items-start">
+                                    <span class="text-orange-500 mr-4 font-bold">✦</span>
+                                    <span>Mapping project-level failure rates against macroeconomic shocks.</span>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <!-- Source 3 -->
+                    <div class="p-12 bg-white gothic-border shadow-sm group">
+                        <h3 class="text-3xl font-serif text-slate-900 mb-6 flex items-center italic">
+                            <span class="w-3 h-3 bg-orange-500 mr-6 rotate-45"></span>
+                            Parish Poverty Relief Ledgers (Mid-19th Century)
+                        </h3>
+                        <p class="text-slate-600 mb-10 font-light leading-relaxed text-lg">
+                            Digitised records of local 'Outdoor Relief' provided to the poor in selected Scottish counties. This data provides a granular look at the welfare floor before the rise of the national welfare state.
+                        </p>
+                        <div class="bg-orange-50/50 p-8 gothic-border border-orange-100">
+                            <h4 class="text-[10px] uppercase tracking-[0.3em] text-orange-600 font-black mb-6">Insights & Methodology</h4>
+                            <ul class="space-y-4">
+                                <li class="text-sm text-slate-600 flex items-start">
+                                    <span class="text-orange-500 mr-4 font-bold">✦</span>
+                                    <span>Seasonal variations in relief highly correlated with agricultural yield data.</span>
+                                </li>
+                                <li class="text-sm text-slate-600 flex items-start">
+                                    <span class="text-orange-500 mr-4 font-bold">✦</span>
+                                    <span>Insights into the demographics of 'temporary' vs. 'permanent' paupers.</span>
+                                </li>
+                                <li class="text-sm text-slate-600 flex items-start">
+                                    <span class="text-orange-500 mr-4 font-bold">✦</span>
+                                    <span>The impact of church fragmentation on local charity administration.</span>
+                                </li>
+                            </ul>
                         </div>
                     </div>
                 </div>
@@ -300,17 +556,17 @@
     </main>
 
     <!-- Footer -->
-    <footer class="mt-24 py-20 bg-slate-900 text-slate-300">
-        <div class="max-w-5xl mx-auto px-8 text-center space-y-8">
-            <div class="inline-block px-4 py-6 border-2 border-orange-600/20 relative">
-                <span class="font-serif text-3xl font-bold text-orange-600 italic">M</span>
+    <footer class="mt-24 py-20 bg-slate-950 text-slate-300">
+        <div class="max-w-6xl mx-auto px-8 text-center space-y-12">
+            <div class="inline-block px-5 py-8 border-2 border-orange-600/30 relative">
+                <span class="font-serif text-4xl font-bold text-orange-600 italic">M</span>
                 <div class="absolute -top-1 -left-1 w-2 h-2 bg-orange-600"></div>
                 <div class="absolute -bottom-1 -right-1 w-2 h-2 bg-orange-600"></div>
             </div>
-            <p class="font-serif italic text-2xl max-w-2xl mx-auto opacity-70 leading-relaxed">
+            <p class="font-serif italic text-3xl max-w-2xl mx-auto opacity-60 leading-relaxed">
                 "The past is a foreign country; they do things differently there."
             </p>
-            <div class="flex flex-wrap justify-center gap-12 text-[10px] tracking-[0.4em] uppercase font-bold text-slate-500">
+            <div class="flex flex-wrap justify-center gap-16 text-[11px] tracking-[0.5em] uppercase font-black text-slate-500">
                 <span>© 2024 George Marten</span>
                 <a href="mailto:gjm2004@hw.ac.uk" class="hover:text-orange-600 transition-colors">Contact</a>
             </div>
@@ -319,19 +575,65 @@
 
     <!-- Logic Script -->
     <script>
-        // Simple Single Page App Logic
+        const LATEX_SOURCE = `% Academic CV LaTeX Template - George Marten
+\\documentclass[11pt,a4paper]{article}
+\\usepackage[utf8]{inputenc}
+\\usepackage[margin=1in]{geometry}
+\\usepackage{hyperref}
+\\usepackage{titlesec}
+\\usepackage{enumitem}
+
+% Section formatting
+\\titleformat{\\section}{\\small\\bfseries\\uppercase}{}{0pt}{}[\\titlerule]
+\\titlespacing*{\\section}{0pt}{1.5ex plus .1ex minus .2ex}{1pc}
+
+\\begin{document}
+\\begin{center}
+    {\\huge \\textbf{George J. Marten}} \\\\[0.5em]
+    Email: \\href{mailto:gjm2004@hw.ac.uk}{gjm2004@hw.ac.uk} \\\\
+    Webpage: \\href{https://georgemarten.net}{georgemarten.net} \\\\
+    Edinburgh Business School, Heriot-Watt University
+\\end{center}
+
+\\section{Education}
+\\noindent Ph.D., Economics, Heriot-Watt University \\hfill (expected) 2026 \\\\
+\\noindent M.Sc., Economics, University of Edinburgh \\hfill 2022 \\\\
+\\noindent B.Sc., Economics, Royal Holloway College \\hfill 2020
+
+\\section{Research Interests}
+\\noindent Political Economy of Welfare Systems, Friendly Societies, English Poor Laws, Co-operation, Applied Econometrics.
+
+\\section{Working Papers}
+\\begin{enumerate}[label=\\arabic*., leftmargin=2em]
+    \\item \`\`Mutual Insurance and the Industrial Revolution: Evidence from Friendly Society Returns\'\'
+    \\item \`\`The Political Economy of Co-operative Production in Victorian Ireland\'\' \\\\
+    \\textit{with Eoin McLaughlin}
+\\end{enumerate}
+
+\\section{Teaching Experience}
+\\textbf{Teaching Assistant, Heriot-Watt University} \\\\
+Intermediate Economics 2 (MSc) \\hfill 2025 \\\\
+The Economy (1) \\hfill 2021--2023
+
+\\section{Awards and Fellowships}
+\\noindent Full PhD Scholarship, Centre for Social \\& Economic Data Analytics \\hfill 2023--2026 \\\\
+\\noindent Economics Prize, St. Crispin's Secondary School \\hfill 2017
+
+\\vfill
+\\begin{flushright}
+\\footnotesize Updated on \\today
+\\end{flushright}
+\\end{document}`;
+
         function navigateTo(pageId) {
-            // Hide all pages
             const pages = document.querySelectorAll('.page-content');
             pages.forEach(p => p.classList.remove('active'));
 
-            // Show target page
             const target = document.getElementById(pageId);
             if (target) {
                 target.classList.add('active');
             }
 
-            // Update Nav Links
             const navLinks = document.querySelectorAll('.nav-link');
             navLinks.forEach(link => {
                 if (link.getAttribute('href') === '#' + pageId) {
@@ -343,17 +645,14 @@
                 }
             });
 
-            // Scroll to top
             window.scrollTo(0, 0);
         }
 
-        // Handle URL hash on load
-        window.addEventListener('load', () => {
-            const hash = window.location.hash.replace('#', '');
-            if (hash) navigateTo(hash);
-        });
+        function toggleAbstract(id) {
+            const el = document.getElementById(id);
+            el.classList.toggle('open');
+        }
 
-        // LaTeX Toggle Logic
         let latexVisible = false;
         function toggleLatex() {
             latexVisible = !latexVisible;
@@ -367,7 +666,23 @@
                 btn.textContent = 'Reveal LaTeX Source';
             }
         }
+
+        window.addEventListener('load', () => {
+            const hash = window.location.hash.replace('#', '') || 'home';
+            navigateTo(hash);
+            
+            document.getElementById('current-date').textContent = new Date().toLocaleDateString('en-GB', { 
+                day: 'numeric', 
+                month: 'long', 
+                year: 'numeric' 
+            });
+            document.getElementById('latex-code').textContent = LATEX_SOURCE;
+        });
+
+        window.addEventListener('hashchange', () => {
+            const hash = window.location.hash.replace('#', '') || 'home';
+            navigateTo(hash);
+        });
     </script>
-<script type="module" src="/index.tsx"></script>
 </body>
 </html>
