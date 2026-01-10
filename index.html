@@ -3,118 +3,371 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>George Marten | Researcher</title>
-    <meta name="description" content="Academic and personal website of George Marten.">
-
+    <title>George Marten | Academic Portfolio</title>
+    <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
-    
+    <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400..800;1,400..800&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
     
     <style>
-        body { font-family: 'Inter', sans-serif; }
-        h1, h2, h3, h4, .font-serif { font-family: 'EB Garamond', serif; }
-        
-        /* The Gothic/Academic accents you wanted */
-        .gothic-border {
-            border-bottom: 1px solid #cbd5e1; /* Slate-300 */
+        :root {
+            --gothic-orange: #f97316;
+            --gothic-blue: #0f172a;
+            --gothic-bg: #fdfdfd;
         }
-        .glass-panel {
-            background: rgba(255, 255, 255, 0.8);
-            backdrop-filter: blur(8px);
-            border: 1px solid rgba(255, 255, 255, 0.3);
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: var(--gothic-bg);
+            color: #1e293b;
+            scroll-behavior: smooth;
+        }
+        h1, h2, h3, h4, .font-serif {
+            font-family: 'EB Garamond', serif;
+        }
+        /* Lancet Arch for Profile Picture */
+        .arch-top {
+            clip-path: ellipse(50% 100% at 50% 100%);
+            border-top-left-radius: 50% 50%;
+            border-top-right-radius: 50% 50%;
+        }
+        /* Drop Cap Logic */
+        .drop-cap::first-letter {
+            font-family: 'EB Garamond', serif;
+            float: left;
+            font-size: 5rem;
+            line-height: 0.7;
+            padding-right: 0.6rem;
+            color: var(--gothic-orange);
+            font-weight: bold;
+        }
+        /* Neo-Gothic Borders */
+        .gothic-border {
+            border: 2px solid var(--gothic-blue);
+            position: relative;
+        }
+        .gothic-border::after {
+            content: '';
+            position: absolute;
+            top: 3px; left: 3px; right: 3px; bottom: 3px;
+            border: 1px solid var(--gothic-orange);
+            pointer-events: none;
+        }
+        /* Animations */
+        .page-content {
+            display: none;
+            opacity: 0;
+            transform: translateY(10px);
+            transition: opacity 0.5s ease, transform 0.5s ease;
+        }
+        .page-content.active {
+            display: block;
+            opacity: 1;
+            transform: translateY(0);
+        }
+        .glass-nav {
+            background: rgba(255, 255, 255, 0.85);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid rgba(15, 23, 42, 0.1);
         }
     </style>
+<script type="importmap">
+{
+  "imports": {
+    "react": "https://esm.sh/react@^19.2.3"
+  }
+}
+</script>
+<link rel="stylesheet" href="/index.css">
 </head>
-<body class="bg-slate-50 text-slate-800 antialiased min-h-screen">
+<body class="selection:bg-orange-100 selection:text-orange-900">
 
-    <nav class="sticky top-0 z-50 glass-panel border-b border-slate-200">
-        <div class="max-w-4xl mx-auto px-6 h-16 flex items-center justify-between">
-            <div class="font-serif text-xl font-medium text-slate-900 tracking-wide">George Marten</div>
-            <div class="space-x-6 text-sm font-medium text-slate-600">
-                <a href="#" class="hover:text-sky-600 transition-colors">Home</a>
-                <a href="#research" class="hover:text-sky-600 transition-colors">Research</a>
-                <a href="#cv" class="hover:text-sky-600 transition-colors">CV</a>
-                <a href="#personal" class="hover:text-sky-600 transition-colors">Personal</a>
+    <!-- Navigation -->
+    <nav class="sticky top-0 z-50 glass-nav px-8 py-6">
+        <div class="max-w-6xl mx-auto flex flex-col md:flex-row justify-between items-center gap-6">
+            <a href="#home" class="group flex flex-col items-center md:items-start" onclick="navigateTo('home')">
+                <h1 class="text-3xl font-serif font-bold tracking-tighter text-slate-900">George Marten</h1>
+                <div id="nav-indicator" class="h-0.5 bg-orange-600 w-0 group-hover:w-full transition-all duration-500"></div>
+            </a>
+            <div class="flex flex-wrap justify-center gap-x-10 gap-y-2">
+                <a href="#home" onclick="navigateTo('home')" class="nav-link text-[10px] font-black tracking-[0.3em] uppercase transition-all duration-300 text-orange-600">Home</a>
+                <a href="#about" onclick="navigateTo('about')" class="nav-link text-[10px] font-black tracking-[0.3em] uppercase transition-all duration-300 text-slate-400 hover:text-slate-900">About</a>
+                <a href="#cv" onclick="navigateTo('cv')" class="nav-link text-[10px] font-black tracking-[0.3em] uppercase transition-all duration-300 text-slate-400 hover:text-slate-900">CV</a>
+                <a href="#research" onclick="navigateTo('research')" class="nav-link text-[10px] font-black tracking-[0.3em] uppercase transition-all duration-300 text-slate-400 hover:text-slate-900">Research</a>
+                <a href="#teaching" onclick="navigateTo('teaching')" class="nav-link text-[10px] font-black tracking-[0.3em] uppercase transition-all duration-300 text-slate-400 hover:text-slate-900">Teaching</a>
+                <a href="#data" onclick="navigateTo('data')" class="nav-link text-[10px] font-black tracking-[0.3em] uppercase transition-all duration-300 text-slate-400 hover:text-slate-900">Data</a>
             </div>
         </div>
     </nav>
 
-    <main class="max-w-3xl mx-auto px-6 py-12">
-
-        <header class="mb-16 text-center">
-            <div class="w-32 h-32 mx-auto mb-6 rounded-full overflow-hidden border-4 border-white shadow-lg relative">
-                <img src="images/headshot.jpg" alt="George Marten" class="w-full h-full object-cover bg-slate-200">
-            </div>
-            
-            <h1 class="text-5xl font-serif text-slate-900 mb-4 tracking-tight">George Marten</h1>
-            <p class="text-lg text-slate-600 max-w-lg mx-auto leading-relaxed">
-                PhD Candidate & Data Scientist exploring the intersection of <span class="text-sky-700 font-medium">complex systems</span> and <span class="text-sky-700 font-medium">human behavior</span>.
-            </p>
-            
-            <div class="mt-8 flex justify-center gap-4">
-                <a href="mailto:your-email@example.com" class="px-6 py-2 bg-slate-900 text-white rounded-full text-sm font-medium hover:bg-slate-700 transition-colors shadow-sm">Contact Me</a>
-                <a href="#" class="px-6 py-2 bg-white text-slate-700 border border-slate-200 rounded-full text-sm font-medium hover:border-slate-400 transition-colors shadow-sm">Download CV</a>
-            </div>
-        </header>
-
-        <section id="research" class="mb-16">
-            <h2 class="text-3xl font-serif text-slate-900 mb-8 pb-4 gothic-border">Research & Projects</h2>
-            
-            <div class="space-y-10">
-                <article class="group">
-                    <h3 class="text-xl font-semibold text-slate-800 group-hover:text-sky-700 transition-colors">
-                        <a href="#">Analysis of Network Dynamics in Social Media</a>
-                    </h3>
-                    <p class="text-sm text-slate-500 mt-1 italic font-serif">Published in Journal of Data Science (2025)</p>
-                    <p class="mt-3 text-slate-600 leading-relaxed">
-                        Investigating how information spreads through small-world networks using Python and Graph Theory. We analyzed over 1M interactions to determine centrality.
-                    </p>
-                    <div class="mt-3 flex gap-3 text-xs font-medium text-sky-600">
-                        <a href="#" class="hover:underline">View PDF →</a>
-                        <a href="#" class="hover:underline">Access Data →</a>
+    <main class="container mx-auto px-8 py-20 max-w-5xl flex-grow min-h-screen">
+        
+        <!-- HOME PAGE -->
+        <section id="home" class="page-content active">
+            <div class="flex flex-col items-center text-center">
+                <div class="relative mb-24 group">
+                    <div class="absolute inset-0 bg-orange-600/5 rounded-full blur-3xl group-hover:bg-orange-600/10 transition-colors"></div>
+                    <div class="w-72 h-96 arch-top border-[10px] border-white shadow-2xl relative overflow-hidden bg-slate-100">
+                        <img src="images/profile.jpg" alt="George Marten" class="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-1000 group-hover:scale-110" onerror="this.src='https://picsum.photos/seed/georgem/600/800'">
                     </div>
-                </article>
+                    <div class="absolute -bottom-10 -right-10 w-24 h-24 bg-slate-900 flex items-center justify-center border-4 border-white shadow-2xl rotate-12 group-hover:rotate-0 transition-transform">
+                        <span class="font-serif text-4xl text-orange-600 font-bold">G</span>
+                    </div>
+                </div>
+                
+                <h2 class="text-7xl font-serif text-slate-900 mb-6 font-bold tracking-tight">Academic Portfolio</h2>
+                <div class="flex items-center justify-center gap-6 mb-16">
+                    <div class="h-px w-16 bg-orange-600/30"></div>
+                    <p class="text-orange-600 uppercase tracking-[0.5em] text-xs font-black">Economic History • Microeconometrics</p>
+                    <div class="h-px w-16 bg-orange-600/30"></div>
+                </div>
 
-                <article class="group">
-                    <h3 class="text-xl font-semibold text-slate-800 group-hover:text-sky-700 transition-colors">
-                        <a href="#">Predictive Modeling for Urban Planning</a>
-                    </h3>
-                    <p class="text-sm text-slate-500 mt-1 italic font-serif">Presented at Int. Conference on Urban Data (2024)</p>
-                    <p class="mt-3 text-slate-600 leading-relaxed">
-                        Using machine learning to predict traffic flow changes based on new zoning laws.
-                    </p>
-                </article>
+                <div class="grid md:grid-cols-2 gap-12 text-left">
+                    <div class="p-10 gothic-border bg-white shadow-sm">
+                        <h3 class="font-serif text-3xl text-slate-900 mb-4">Mutualism</h3>
+                        <p class="text-slate-600 leading-relaxed font-light text-lg">
+                            Researching the resilience of local mutual insurance networks during the peak of the Industrial Revolution (1855–1880).
+                        </p>
+                    </div>
+                    <div class="p-10 gothic-border bg-white shadow-sm">
+                        <h3 className="font-serif text-3xl text-slate-900 mb-4">Digitisation</h3>
+                        <p class="text-slate-600 leading-relaxed font-light text-lg">
+                            Creating structured datasets from expansive historical archives using modern computational techniques and OCR pipelines.
+                        </p>
+                    </div>
+                </div>
             </div>
         </section>
 
-        <section id="personal">
-            <h2 class="text-3xl font-serif text-slate-900 mb-8 pb-4 gothic-border">Personal Interests</h2>
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
-                <div class="bg-white p-6 rounded-lg border border-slate-100 shadow-sm hover:shadow-md transition-shadow">
-                    <div class="text-sky-600 mb-2 text-xl">📷</div>
-                    <h3 class="font-medium text-slate-900 mb-2">Photography</h3>
-                    <p class="text-sm text-slate-600">Capturing urban landscapes on 35mm film.</p>
+        <!-- ABOUT PAGE -->
+        <section id="about" class="page-content">
+            <div class="max-w-3xl mx-auto space-y-20">
+                <div class="text-center space-y-4">
+                    <h2 class="text-6xl font-serif text-slate-900">The Scholar</h2>
+                    <div class="w-24 h-1 bg-orange-600 mx-auto"></div>
                 </div>
-                <div class="bg-white p-6 rounded-lg border border-slate-100 shadow-sm hover:shadow-md transition-shadow">
-                    <div class="text-sky-600 mb-2 text-xl">🏃‍♂️</div>
-                    <h3 class="font-medium text-slate-900 mb-2">Running</h3>
-                    <p class="text-sm text-slate-600">Training for the London Marathon. PB: 3:45.</p>
+                <div class="text-slate-700 font-light leading-relaxed text-xl">
+                    <p class="drop-cap">
+                        I am a PhD student in Economics at Heriot-Watt University, specializing in the intersection of microeconometrics and 19th-century history. My passion is unearthing quantitative evidence from forgotten archives to understand how societies self-organized before the modern state.
+                    </p>
+                    <p class="mt-12">
+                        My primary research involves the digitisation and analysis of thousands of Friendly Society returns. These records reveal a complex web of community-based welfare that provided critical support to millions of people during Britain's rapid industrialization.
+                    </p>
                 </div>
-                <div class="bg-white p-6 rounded-lg border border-slate-100 shadow-sm hover:shadow-md transition-shadow">
-                    <div class="text-sky-600 mb-2 text-xl">🍳</div>
-                    <h3 class="font-medium text-slate-900 mb-2">Cooking</h3>
-                    <p class="text-sm text-slate-600">Perfecting the art of sourdough bread.</p>
+                <div class="grid grid-cols-3 gap-8 mt-20">
+                    <div class="group relative overflow-hidden rounded-sm shadow-xl aspect-[3/4] border-4 border-white">
+                        <img src="images/IoR.jpg" alt="Hebrides" class="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-1000" onerror="this.src='https://picsum.photos/seed/hebrides/600/800'">
+                    </div>
+                    <div class="group relative overflow-hidden rounded-sm shadow-xl aspect-[3/4] border-4 border-white">
+                        <img src="images/CMD.jpg" alt="CMD Ridge" class="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-1000" onerror="this.src='https://picsum.photos/seed/peak/600/800'">
+                    </div>
+                    <div class="group relative overflow-hidden rounded-sm shadow-xl aspect-[3/4] border-4 border-white">
+                        <img src="images/fire.jpg" alt="The Hearth" class="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-1000" onerror="this.src='https://picsum.photos/seed/candle/600/800'">
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- CV PAGE -->
+        <section id="cv" class="page-content">
+            <div class="max-w-4xl mx-auto pb-20">
+                <div class="bg-white shadow-2xl p-12 md:p-24 gothic-border text-slate-900 font-serif min-h-[1100px]">
+                    <header class="text-center mb-24 space-y-6">
+                        <h1 class="text-6xl font-bold">George J. Marten</h1>
+                        <p class="text-xs uppercase tracking-[0.5em] font-black text-orange-600">Curriculum Vitae</p>
+                        <div class="flex flex-wrap justify-center gap-12 text-xs font-bold text-slate-400 font-sans tracking-widest">
+                            <a href="mailto:gjm2004@hw.ac.uk" class="hover:text-orange-600 underline decoration-slate-200">gjm2004@hw.ac.uk</a>
+                            <span>georgemarten.net</span>
+                        </div>
+                    </header>
+                    <div class="space-y-20">
+                        <section>
+                            <h3 class="text-[11px] font-sans font-black uppercase tracking-[0.4em] text-slate-950 mb-10 border-b-2 border-slate-900 pb-2">I. Education</h3>
+                            <div class="space-y-8">
+                                <div class="flex justify-between items-start">
+                                    <div>
+                                        <p class="text-2xl font-bold italic">Ph.D. Economics</p>
+                                        <p class="text-slate-500 font-sans text-sm">Heriot-Watt University, Edinburgh</p>
+                                    </div>
+                                    <p class="text-sm font-sans italic opacity-40">2023 – 2026</p>
+                                </div>
+                                <div class="flex justify-between items-start opacity-60">
+                                    <div>
+                                        <p class="text-2xl font-bold italic">M.Sc. Economics</p>
+                                        <p class="text-slate-500 font-sans text-sm">University of Edinburgh</p>
+                                    </div>
+                                    <p class="text-sm font-sans italic opacity-40">2021 – 2022</p>
+                                </div>
+                            </div>
+                        </section>
+                        <section>
+                            <h3 class="text-[11px] font-sans font-black uppercase tracking-[0.4em] text-slate-950 mb-10 border-b-2 border-slate-900 pb-2">II. Selected Papers</h3>
+                            <div class="space-y-12">
+                                <div>
+                                    <p class="text-xl font-bold leading-tight">"Mutual Insurance and the Industrial Revolution"</p>
+                                    <p class="text-sm text-slate-600 font-sans mt-3 font-light max-w-2xl leading-relaxed">
+                                        Analyzing 20,000+ branch-level returns to map social resilience during structural economic change.
+                                    </p>
+                                </div>
+                            </div>
+                        </section>
+                    </div>
+                </div>
+                <div class="mt-16 flex flex-col items-center gap-10">
+                    <button onclick="toggleLatex()" class="px-12 py-5 bg-slate-900 text-white font-sans font-black text-xs uppercase tracking-[0.3em] hover:bg-orange-600 transition-all shadow-2xl">
+                        Reveal LaTeX Source
+                    </button>
+                    <div id="latex-view" class="hidden w-full p-12 bg-slate-950 rounded-none shadow-inner border-t-8 border-orange-600 overflow-x-auto">
+                        <pre class="text-orange-400/80 text-xs font-mono leading-relaxed">% Academic CV - George Marten
+\documentclass[11pt,a4paper]{article}
+\begin{document}
+\centerline{\huge \textbf{George J. Marten}}
+\centerline{Heriot-Watt University}
+\section*{Education}
+\textbf{Ph.D. Economics}, Heriot-Watt \hfill (exp) 2026
+\textbf{M.Sc. Economics}, Edinburgh \hfill 2022
+\end{document}</pre>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- RESEARCH PAGE -->
+        <section id="research" class="page-content">
+            <div class="space-y-16">
+                <header class="space-y-4 text-center md:text-left">
+                    <h2 class="text-7xl font-serif text-slate-900 font-bold">Research</h2>
+                    <p class="text-slate-400 font-light text-2xl leading-relaxed max-w-3xl">Uncovering the quantitative history of community insurance.</p>
+                </header>
+                <div class="grid gap-16">
+                    <div class="p-16 gothic-border bg-white group hover:border-orange-600 transition-colors">
+                        <span class="text-[11px] font-black text-orange-600 uppercase tracking-[0.4em] mb-6 block">Current Project</span>
+                        <h3 class="text-4xl font-serif text-slate-900 mb-6 italic">Mutual Insurance & Industrial Growth</h3>
+                        <p class="text-slate-600 font-light leading-relaxed text-xl mb-10">
+                            How did traditional community networks respond to the massive demographic shifts of the 19th century? I utilize branch-level financial data to track institutional adaptation.
+                        </p>
+                        <div class="flex flex-wrap gap-4">
+                            <span class="text-[10px] font-black bg-slate-900 text-white px-4 py-2 uppercase tracking-widest">Job Market Paper</span>
+                            <span class="text-[10px] font-black bg-orange-600 text-white px-4 py-2 uppercase tracking-widest">History</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- TEACHING PAGE -->
+        <section id="teaching" class="page-content">
+            <div class="space-y-16">
+                <h2 class="text-7xl font-serif text-slate-900 font-bold">Teaching</h2>
+                <div class="p-16 gothic-border bg-slate-900 text-white">
+                    <div class="flex justify-between items-center mb-8 border-b border-white/10 pb-6">
+                        <span class="text-xs font-black text-orange-600 tracking-[0.4em] uppercase">ECON101</span>
+                        <span class="text-xs font-bold text-slate-500 uppercase tracking-widest">Heriot-Watt University</span>
+                    </div>
+                    <h3 class="text-5xl font-serif mb-6 italic">Principles of Microeconomics</h3>
+                    <p class="text-slate-400 font-light text-xl leading-relaxed max-w-3xl">
+                        Instructing undergraduate students in the fundamental frameworks of economic decision-making, from consumer theory to market equilibrium.
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <!-- DATA PAGE -->
+        <section id="data" class="page-content">
+            <div class="space-y-16">
+                <h2 class="text-7xl font-serif text-slate-900 font-bold">Data</h2>
+                <div class="p-20 bg-white border-8 border-slate-900 relative shadow-2xl">
+                    <div class="absolute top-0 right-0 w-32 h-32 bg-orange-600/10 blur-[100px]"></div>
+                    <h3 class="text-4xl font-serif mb-8 text-slate-900 font-bold">The Friendly Society Database</h3>
+                    <p class="text-slate-600 font-light leading-relaxed text-xl mb-12 max-w-3xl">
+                        I have constructed a unique longitudinal database from tens of thousands of Parliamentary returns, covering the financial history of mutual aid across the British Isles.
+                    </p>
+                    <div class="grid grid-cols-2 gap-12 border-t-2 border-slate-900 pt-12">
+                        <div>
+                            <p class="text-xs font-black text-orange-600 uppercase tracking-[0.3em] mb-2">Total Branches</p>
+                            <p class="text-4xl font-serif font-bold italic">15,000+</p>
+                        </div>
+                        <div>
+                            <p class="text-xs font-black text-orange-600 uppercase tracking-[0.3em] mb-2">Time Horizon</p>
+                            <p class="text-4xl font-serif font-bold italic">1855 – 1880</p>
+                        </div>
+                    </div>
                 </div>
             </div>
         </section>
 
     </main>
 
-    <footer class="text-center py-8 text-slate-400 text-sm border-t border-slate-200 mt-12">
-        &copy; 2026 George Marten. Built with GitHub Pages & Tailwind.
+    <!-- Footer -->
+    <footer class="mt-24 py-20 bg-slate-900 text-slate-300">
+        <div class="max-w-5xl mx-auto px-8 text-center space-y-8">
+            <div class="inline-block px-4 py-6 border-2 border-orange-600/20 relative">
+                <span class="font-serif text-3xl font-bold text-orange-600 italic">M</span>
+                <div class="absolute -top-1 -left-1 w-2 h-2 bg-orange-600"></div>
+                <div class="absolute -bottom-1 -right-1 w-2 h-2 bg-orange-600"></div>
+            </div>
+            <p class="font-serif italic text-2xl max-w-2xl mx-auto opacity-70 leading-relaxed">
+                "The past is a foreign country; they do things differently there."
+            </p>
+            <div class="flex flex-wrap justify-center gap-12 text-[10px] tracking-[0.4em] uppercase font-bold text-slate-500">
+                <span>© 2024 George Marten</span>
+                <a href="mailto:gjm2004@hw.ac.uk" class="hover:text-orange-600 transition-colors">Contact</a>
+            </div>
+        </div>
     </footer>
 
+    <!-- Logic Script -->
+    <script>
+        // Simple Single Page App Logic
+        function navigateTo(pageId) {
+            // Hide all pages
+            const pages = document.querySelectorAll('.page-content');
+            pages.forEach(p => p.classList.remove('active'));
+
+            // Show target page
+            const target = document.getElementById(pageId);
+            if (target) {
+                target.classList.add('active');
+            }
+
+            // Update Nav Links
+            const navLinks = document.querySelectorAll('.nav-link');
+            navLinks.forEach(link => {
+                if (link.getAttribute('href') === '#' + pageId) {
+                    link.classList.add('text-orange-600');
+                    link.classList.remove('text-slate-400');
+                } else {
+                    link.classList.remove('text-orange-600');
+                    link.classList.add('text-slate-400');
+                }
+            });
+
+            // Scroll to top
+            window.scrollTo(0, 0);
+        }
+
+        // Handle URL hash on load
+        window.addEventListener('load', () => {
+            const hash = window.location.hash.replace('#', '');
+            if (hash) navigateTo(hash);
+        });
+
+        // LaTeX Toggle Logic
+        let latexVisible = false;
+        function toggleLatex() {
+            latexVisible = !latexVisible;
+            const view = document.getElementById('latex-view');
+            const btn = document.querySelector('button[onclick="toggleLatex()"]');
+            if (latexVisible) {
+                view.classList.remove('hidden');
+                btn.textContent = 'Hide Source';
+            } else {
+                view.classList.add('hidden');
+                btn.textContent = 'Reveal LaTeX Source';
+            }
+        }
+    </script>
+<script type="module" src="/index.tsx"></script>
 </body>
 </html>
