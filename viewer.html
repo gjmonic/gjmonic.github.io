@@ -53,7 +53,7 @@
         </div>
     </nav>
 
-    <main class="container mx-auto px-4 py-8 max-w-6xl">
+    <main class="container mx-auto px-4 py-8 max-w-3xl">
         <!-- Back link -->
         <a href="essays.html" class="inline-flex items-center text-[#1e3a5f] hover:text-[#fb923c] transition-colors mb-6 text-sm font-medium">
             <span class="mr-2">←</span> Back to Essays
@@ -63,8 +63,12 @@
         <h2 id="essay-title" class="text-4xl font-serif text-[#1e3a5f] mb-8 font-bold italic"></h2>
 
         <!-- PDF Viewer -->
-        <div class="bg-white rounded-lg shadow-xl overflow-hidden" style="height: calc(100vh - 280px); min-height: 600px;">
-            <iframe id="pdf-viewer" class="w-full h-full" frameborder="0"></iframe>
+        <div class="bg-white rounded-lg shadow-xl overflow-auto" style="height: 700px;">
+            <object id="pdf-viewer" type="application/pdf" class="w-full h-full">
+                <p class="p-8 text-center text-slate-600">
+                    Unable to display PDF. <a id="pdf-fallback-link" href="#" class="text-[#fb923c] underline">Download it here</a>.
+                </p>
+            </object>
         </div>
 
         <!-- Download link -->
@@ -95,12 +99,13 @@
         if (essayId && essays[essayId]) {
             const essay = essays[essayId];
             document.getElementById('essay-title').textContent = essay.title;
-            document.getElementById('pdf-viewer').src = essay.pdf;
+            document.getElementById('pdf-viewer').data = essay.pdf;
+            document.getElementById('pdf-fallback-link').href = essay.pdf;
             document.getElementById('download-link').href = essay.pdf;
             document.title = essay.title + ' | George Marten';
         } else {
             document.getElementById('essay-title').textContent = 'Essay not found';
-            document.getElementById('pdf-viewer').style.display = 'none';
+            document.getElementById('pdf-viewer').parentElement.style.display = 'none';
             document.getElementById('download-link').style.display = 'none';
         }
     </script>
