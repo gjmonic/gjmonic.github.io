@@ -86,51 +86,90 @@
             </header>
 
             <div class="space-y-12">
+                <!-- Publications -->
+                <h3 class="text-xs uppercase tracking-[0.4em] font-black text-slate-300 mb-8 flex items-center">
+                    Publications
+                    <span class="ml-6 flex-grow h-px bg-slate-100"></span>
+                </h3>
+
+                <div class="grid gap-10">
+                    <div class="p-10 gothic-border bg-white shadow-sm group">
+                        <div class="flex flex-wrap gap-2 mb-6">
+                            <span class="text-[10px] font-black uppercase tracking-widest text-[#fb923c] bg-[#fb923c]/10 px-3 py-1">Historical Data</span>
+                            <span class="text-[10px] font-black uppercase tracking-widest text-[#fb923c] bg-[#fb923c]/10 px-3 py-1">Data Visualisation</span>
+                            <span class="text-[10px] font-black uppercase tracking-widest text-[#fb923c] bg-[#fb923c]/10 px-3 py-1">Methodology</span>
+                        </div>
+                        <h3 class="text-3xl font-serif text-[#1e3a5f] mb-2 italic">"A Brief Guide to Processing Historical Data: From Tables to Visuals"</h3>
+                        <p class="text-sm text-slate-500 mb-2">Forthcoming in <span class="italic">Research Handbook on Gender, History, and Law</span></p>
+                        <p class="text-sm text-slate-500 mb-2">Editors: Danaya C. Wright, Caroline Derry, and Rosemary Auchmuty. Published by Edward Elgar.</p>
+                        <p class="text-slate-400 text-sm mb-8 italic">Expected: late 2026/early 2027</p>
+                        <button onclick="toggleAbstract('abs0')" class="text-[10px] font-black uppercase tracking-[0.3em] text-[#1e3a5f] hover:text-[#fb923c] transition-colors flex items-center">
+                            Abstract <span class="ml-2">↓</span>
+                        </button>
+                        <div id="abs0" class="abstract-content">
+                            <p class="mt-8 text-slate-600 font-light leading-relaxed border-l-2 border-[#fb923c]/30 pl-6 italic">
+                                I provide a simple guide to using printed numerical tables to support historical research. Often, useful tables of information are bound in physical form and can be cumbersome, consisting of an intimidating number of rows and columns. A researcher wanting to provide historical context may like to provide visualisations of this data or generate simple statistics from it. As the rising tide of Artificial Intelligence (AI) products lowers barriers to transcribing historical data tables, a renewed need emerges to simply state the non-AI approach to such a task, in order to give historians a baseline from which to understand and critique automated 'black-box' approaches now all too easily relied upon. Using only Excel and the R coding language, this chapter guides historians through a worked example from transcription to produced visuals.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Working Papers -->
                 <h3 class="text-xs uppercase tracking-[0.4em] font-black text-slate-300 mb-8 flex items-center">
                     Working Papers
                     <span class="ml-6 flex-grow h-px bg-slate-100"></span>
                 </h3>
 
                 <div class="grid gap-10">
-                    <!-- Paper 1 -->
+                    <!-- Paper WP1 -->
                     <div class="p-10 gothic-border bg-white shadow-sm group">
                         <div class="flex flex-wrap gap-2 mb-6">
-                            <span class="text-[10px] font-black uppercase tracking-widest text-[#fb923c] bg-[#fb923c]/10 px-3 py-1">Classical Political Economy</span>
-                            <span class="text-[10px] font-black uppercase tracking-widest text-[#fb923c] bg-[#fb923c]/10 px-3 py-1">Friendly Societies</span>
-                            <span class="text-[10px] font-black uppercase tracking-widest text-[#fb923c] bg-[#fb923c]/10 px-3 py-1">The New Poor Law</span>
+                            <span class="text-[10px] font-black uppercase tracking-widest text-[#fb923c] bg-[#fb923c]/10 px-3 py-1">Lancashire Cotton Famine</span>
+                            <span class="text-[10px] font-black uppercase tracking-widest text-[#fb923c] bg-[#fb923c]/10 px-3 py-1">Economic Distress</span>
+                            <span class="text-[10px] font-black uppercase tracking-widest text-[#fb923c] bg-[#fb923c]/10 px-3 py-1">Poor Relief</span>
                         </div>
-                        <h3 class="text-3xl font-serif text-[#1e3a5f] mb-2 italic">"Weaving Resilience: Public-Private Welfare Substitution After the First Industrial Revolution"</h3>
+                        <h3 class="text-3xl font-serif text-[#1e3a5f] mb-2 italic">"Economic distress during the Lancashire Cotton Famine, 1861-65"</h3>
                         <p class="text-slate-400 text-sm mb-8 italic">2026</p>
                         <button onclick="toggleAbstract('abs1')" class="text-[10px] font-black uppercase tracking-[0.3em] text-[#1e3a5f] hover:text-[#fb923c] transition-colors flex items-center">
                             Abstract <span class="ml-2">↓</span>
                         </button>
                         <div id="abs1" class="abstract-content">
                             <p class="mt-8 text-slate-600 font-light leading-relaxed border-l-2 border-[#fb923c]/30 pl-6 italic">
-                                I provide evidence on the classical political economy hypothesis that private initiates for welfare transfers 
-                                can substitute for public systems. In the decades following the first Industrial Revolution, as such political 
-                                economy took on increasing influence, the Lancashire Cotton `Famine' marked a total disruption of Britain's 
-                                largest industry. 
-                                I make use of heterogeneous friendly society activity within the cotton industry to compare how recourse 
-                                to the Poor Law as a last resort differed between manufacturing communities with varying extents of `self-help'. 
-                                Estimates from a triple difference-in-differences framework suggest that these mutual worker insurance groups 
-                                played a counter-intuitive role: places with above average society density had markedly greater demand for short-term outdoor relief.
+                                The U.S. Civil War (1861-65) drove economic distress across Britain's cotton region, culminating in a recession now known as the Lancashire Cotton Famine.
+                                This raw cotton shortage led many to the New Poor Law as a means of securing their welfare.
+                                Difference-in-differences reveal that outdoor relief rates were 51% higher than their pre-recession mean after the shock, with this figure reaching 347% when the cotton shortage was at its worst. I also find that whilst the worst of the recession was over during the U.S. Civil War, roughly 3 and a half years after its outbreak, Poor Law relief converged to its baseline well after the war had ended. This fits with existing findings of 'tick-shaped' recessions.
+                                I supplement this with descriptive evidence to consider how the economic structure of England and Wales in 1861 might have altered the distress effect, evaluating potential channels along which individuals plausibly out-migrated to handle the recession.
                             </p>
                         </div>
                     </div>
 
-                    <h3 class="text-xs uppercase tracking-[0.4em] font-black text-slate-300 mb-8 flex items-center">
-                        Works in Progress
-                        <span class="ml-6 flex-grow h-px bg-slate-100"></span>
-                    </h3>
+                    <!-- Paper WP2 -->
+                    <div class="p-10 gothic-border bg-white shadow-sm group">
+                        <div class="flex flex-wrap gap-2 mb-6">
+                            <span class="text-[10px] font-black uppercase tracking-widest text-[#fb923c] bg-[#fb923c]/10 px-3 py-1">Friendly Societies</span>
+                            <span class="text-[10px] font-black uppercase tracking-widest text-[#fb923c] bg-[#fb923c]/10 px-3 py-1">The New Poor Law</span>
+                            <span class="text-[10px] font-black uppercase tracking-widest text-[#fb923c] bg-[#fb923c]/10 px-3 py-1">Risk Pooling</span>
+                        </div>
+                        <h3 class="text-3xl font-serif text-[#1e3a5f] mb-2 italic">"Two Ways to Pool Risk: Friendly Societies and the New Poor Law in Nineteenth-Century England and Wales"</h3>
+                        <p class="text-slate-400 text-sm mb-8 italic">2026</p>
+                        <button onclick="toggleAbstract('abs1b')" class="text-[10px] font-black uppercase tracking-[0.3em] text-[#1e3a5f] hover:text-[#fb923c] transition-colors flex items-center">
+                            Abstract <span class="ml-2">↓</span>
+                        </button>
+                        <div id="abs1b" class="abstract-content">
+                            <p class="mt-8 text-slate-600 font-light leading-relaxed border-l-2 border-[#fb923c]/30 pl-6 italic">
+                                This paper studies two distinct mechanisms for pooling risk across England and Wales in the mid nineteenth century. The New Poor Law was a tax funded local last resort for the destitute. Friendly societies were mutual membership organisations which used their funds to protect against idiosyncratic risk. Using an exogenous shock to the cotton industry alongside novel society and parish level data, I study how these two systems handled recessionary stress.
+                            </p>
+                        </div>
+                    </div>
 
-                    <!-- Paper 2 -->
+                    <!-- Paper WP3 -->
                     <div class="p-10 gothic-border bg-white shadow-sm group">
                         <div class="flex flex-wrap gap-2 mb-6">
                             <span class="text-[10px] font-black uppercase tracking-widest text-[#fb923c] bg-[#fb923c]/10 px-3 py-1">Irish Dairying</span>
-                            <span class="text-[10px] font-black uppercase tracking-widest text-[#fb923c] bg-[#fb923c]/10 px-3 py-1">Cooperatives</span>
-                            <span class="text-[10px] font-black uppercase tracking-widest text-[#fb923c] bg-[#fb923c]/10 px-3 py-1">Development</span>
+                            <span class="text-[10px] font-black uppercase tracking-widest text-[#fb923c] bg-[#fb923c]/10 px-3 py-1">Co-operatives</span>
+                            <span class="text-[10px] font-black uppercase tracking-widest text-[#fb923c] bg-[#fb923c]/10 px-3 py-1">Demographic Crisis</span>
                         </div>
-                        <h3 class="text-3xl font-serif text-[#1e3a5f] mb-1 italic">"Cream of the Crop? Irish Cooperative Dairying and Development at the turn of the 20th Century"</h3>
+                        <h3 class="text-3xl font-serif text-[#1e3a5f] mb-1 italic">"Institutions Against Demographic Crisis? Irish Co-operative Dairying 1901-1911"</h3>
                         <p class="text-sm text-slate-500 mb-2">With: <span class="italic">Eoin McLaughlin</span></p>
                         <p class="text-slate-400 text-sm mb-8 italic">2026</p>
                         <button onclick="toggleAbstract('abs2')" class="text-[10px] font-black uppercase tracking-[0.3em] text-[#1e3a5f] hover:text-[#fb923c] transition-colors flex items-center">
@@ -138,21 +177,29 @@
                         </button>
                         <div id="abs2" class="abstract-content">
                             <p class="mt-8 text-slate-600 font-light leading-relaxed border-l-2 border-[#fb923c]/30 pl-6 italic">
-                                We investigate the impact of cooperative creamery establishments in Ireland between 1901-1911 on a variety of socio-economic outcomes, 
-                                testing the hypothesis that the development of local industry can lead to improved health and human capital outcomes. 
+                                We investigate the impact of cooperative creamery establishments in Ireland between 1901-1911 on a variety of socio-economic outcomes,
+                                testing the hypothesis that the development of local industry can lead to improved health and human capital outcomes.
                             </p>
                         </div>
                     </div>
+                </div>
 
-                    <!-- Paper 3 -->
+                <!-- Works in Progress -->
+                <h3 class="text-xs uppercase tracking-[0.4em] font-black text-slate-300 mb-8 flex items-center">
+                    Works in Progress
+                    <span class="ml-6 flex-grow h-px bg-slate-100"></span>
+                </h3>
+
+                <div class="grid gap-10">
+                    <!-- Paper WIP1 -->
                     <div class="p-10 gothic-border bg-white shadow-sm group">
                         <div class="flex flex-wrap gap-2 mb-6">
                             <span class="text-[10px] font-black uppercase tracking-widest text-[#fb923c] bg-[#fb923c]/10 px-3 py-1">Ireland</span>
-                            <span class="text-[10px] font-black uppercase tracking-widest text-[#fb923c] bg-[#fb923c]/10 px-3 py-1">Development</span>
+                            <span class="text-[10px] font-black uppercase tracking-widest text-[#fb923c] bg-[#fb923c]/10 px-3 py-1">Poor Relief</span>
                             <span class="text-[10px] font-black uppercase tracking-widest text-[#fb923c] bg-[#fb923c]/10 px-3 py-1">Microfinance</span>
                             <span class="text-[10px] font-black uppercase tracking-widest text-[#fb923c] bg-[#fb923c]/10 px-3 py-1">Savings Banks</span>
                         </div>
-                        <h3 class="text-3xl font-serif text-[#1e3a5f] mb-2 italic">"Microfinance In Ireland around 1841: Shows Me the Money, Takes it Away"</h3>
+                        <h3 class="text-3xl font-serif text-[#1e3a5f] mb-2 italic">"Irish Microfinance: Poor Relief Impacts of Savings Bank Closures in 1848"</h3>
                         <p class="text-sm text-slate-500 mb-2">With: <span class="italic">Eoin McLaughlin</span></p>
                         <p class="text-slate-400 text-sm mb-8 italic">2026</p>
                         <button onclick="toggleAbstract('abs3')" class="text-[10px] font-black uppercase tracking-[0.3em] text-[#1e3a5f] hover:text-[#fb923c] transition-colors flex items-center">
@@ -160,21 +207,21 @@
                         </button>
                         <div id="abs3" class="abstract-content">
                             <p class="mt-8 text-slate-600 font-light leading-relaxed border-l-2 border-[#fb923c]/30 pl-6 italic">
-                                What were the differential impacts of being endowed with local microfinance institutions on local populations around 1841? 
-                                We compare census outcomes across local parishes in Ireland, where a stark West-East split in the reform and withdrawl of 
-                                savings banks enables a natural experiment on the impacts of local financial institutions on outcomes such as health, literacy, and occupational composition. 
+                                What were the differential impacts of being endowed with local microfinance institutions on local populations around 1841?
+                                We compare census outcomes across local parishes in Ireland, where a stark West-East split in the reform and withdrawl of
+                                savings banks enables a natural experiment on the impacts of local financial institutions on outcomes such as health, literacy, and occupational composition.
                             </p>
                         </div>
                     </div>
 
-                    <!-- Paper GS Securitization -->
+                    <!-- Paper WIP2 -->
                     <div class="p-10 gothic-border bg-white shadow-sm group">
                         <div class="flex flex-wrap gap-2 mb-6">
-                            <span class="text-[10px] font-black uppercase tracking-widest text-[#fb923c] bg-[#fb923c]/10 px-3 py-1">Securitization</span>
+                            <span class="text-[10px] font-black uppercase tracking-widest text-[#fb923c] bg-[#fb923c]/10 px-3 py-1">Securitisation</span>
                             <span class="text-[10px] font-black uppercase tracking-widest text-[#fb923c] bg-[#fb923c]/10 px-3 py-1">Financial Economics</span>
-                            <span class="text-[10px] font-black uppercase tracking-widest text-[#fb923c] bg-[#fb923c]/10 px-3 py-1">Macroeconomic Theory</span>
+                            <span class="text-[10px] font-black uppercase tracking-widest text-[#fb923c] bg-[#fb923c]/10 px-3 py-1">Economic Theory</span>
                         </div>
-                        <h3 class="text-3xl font-serif text-[#1e3a5f] mb-2 italic">"Securtization: Towards a Unified Theory"</h3>
+                        <h3 class="text-3xl font-serif text-[#1e3a5f] mb-2 italic">"Securitisation: Towards a Theoretical Model"</h3>
                         <p class="text-sm text-slate-500 mb-2">With: <span class="italic">George Smith</span></p>
                         <p class="text-slate-400 text-sm mb-8 italic">2026</p>
                         <button onclick="toggleAbstract('abs4')" class="text-[10px] font-black uppercase tracking-[0.3em] text-[#1e3a5f] hover:text-[#fb923c] transition-colors flex items-center">
@@ -182,14 +229,14 @@
                         </button>
                         <div id="abs4" class="abstract-content">
                             <p class="mt-8 text-slate-600 font-light leading-relaxed border-l-2 border-[#fb923c]/30 pl-6 italic">
-                                How does the market for securitization function? Who are the major players and what are their action spaces? Who has which incentives? 
+                                How does the market for securitization function? Who are the major players and what are their action spaces? Who has which incentives?
                                 In an effort to answer such questions, we write a model of the UK securitization market. This project occupies its own website, where
-                                interested parties are able to play with assumptions and see how different players are impacted by efficiency and profitability implications. 
+                                interested parties are able to play with assumptions and see how different players are impacted by efficiency and profitability implications.
                             </p>
                         </div>
                     </div>
 
-                    <!-- Paper FS Development -->
+                    <!-- Paper - Friendly Societies & Development -->
                     <div class="p-10 gothic-border bg-white shadow-sm group">
                         <div class="flex flex-wrap gap-2 mb-6">
                             <span class="text-[10px] font-black uppercase tracking-widest text-[#fb923c] bg-[#fb923c]/10 px-3 py-1">Friendly Societies</span>
@@ -204,13 +251,13 @@
                         <div id="abs5" class="abstract-content">
                             <p class="mt-8 text-slate-600 font-light leading-relaxed border-l-2 border-[#fb923c]/30 pl-6 italic">
                                 I leverage recently digitised data on friendly societies in Britain between 1851 and 1861 in order to test the hypothesis that local mutual insurance
-                                schemes can lead to improved developmental outcomes at the local level. I do this by exploiting the variation timing of friendly society establishments 
-                                as a continuous and staggered treatment in a difference-in-differences framework. 
+                                schemes can lead to improved developmental outcomes at the local level. I do this by exploiting the variation timing of friendly society establishments
+                                as a continuous and staggered treatment in a difference-in-differences framework.
                             </p>
                         </div>
                     </div>
 
-                    <!-- Paper Emissions and Inequality -->
+                    <!-- Paper - Emissions and Inequality -->
                     <div class="p-10 gothic-border bg-white shadow-sm group">
                         <div class="flex flex-wrap gap-2 mb-6">
                             <span class="text-[10px] font-black uppercase tracking-widest text-[#fb923c] bg-[#fb923c]/10 px-3 py-1">Carbon Emissions Accounting</span>
@@ -224,15 +271,15 @@
                         </button>
                         <div id="abs6" class="abstract-content">
                             <p class="mt-8 text-slate-600 font-light leading-relaxed border-l-2 border-[#fb923c]/30 pl-6 italic">
-                                I leverage long-run estimates of emissions and industrial policy implpementations in order to study the regional trade-offs between 
-                                income and air quality. This is motivated by a desire to test the political economy of climate change related policy: 
+                                I leverage long-run estimates of emissions and industrial policy implpementations in order to study the regional trade-offs between
+                                income and air quality. This is motivated by a desire to test the political economy of climate change related policy:
                                 in a post-industrial economy such as the UK, how far is industrial decline good for national air quality accounting,
-                                but bad for those regions which have made inter-generational sacrifices? 
+                                but bad for those regions which have made inter-generational sacrifices?
                             </p>
                         </div>
                     </div>
 
-                    <!-- Paper Primer for Attention: a modern FOP -->
+                    <!-- Paper - Attention as Factor of Production -->
                     <div class="p-10 gothic-border bg-white shadow-sm group">
                         <div class="flex flex-wrap gap-2 mb-6">
                             <span class="text-[10px] font-black uppercase tracking-widest text-[#fb923c] bg-[#fb923c]/10 px-3 py-1">Macroeconomic Theory</span>
@@ -248,10 +295,10 @@
                             <p class="mt-8 text-slate-600 font-light leading-relaxed border-l-2 border-[#fb923c]/30 pl-6 italic">
                                 In a world where one's attention seems increasingly hard to manage, its scaracity might imply an inherent economic value.
                                 This short paper provides a primer to a wider body of research I wish to conduct on how we can measure attention as a
-                                fundamental factor in production. I argue that whilst land, labour, and capital capture traditional embodied value in an intuitive 
+                                fundamental factor in production. I argue that whilst land, labour, and capital capture traditional embodied value in an intuitive
                                 and useful way, entreprise falls short of fully reflecting the non-tangiable pre-requisites of productive action: all of the entreprenaurial
                                 capacity in the world cannot substitute for a shortened attention span. I suggest that the UK, and perhaps most nations, face a crisis of attention
-                                which underlies further declines in a well documented and longer term stagnation in productivity. 
+                                which underlies further declines in a well documented and longer term stagnation in productivity.
                             </p>
                         </div>
                     </div>
